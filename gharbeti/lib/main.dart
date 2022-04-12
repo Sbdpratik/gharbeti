@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'GharBeti'),
     );
   }
 }
@@ -73,7 +74,22 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        // leading: Text(widget.title,
+        //     style: const TextStyle(color: Colors.green, fontSize: 26.0),
+        //     textAlign: TextAlign.left),
+        leading: Image.asset("logo.png"),
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.lightGreen,
+        elevation: 0,
+        leadingWidth: 150.0,
+        actions:const [Padding(
+          padding: EdgeInsets.all(10.0),
+          child: Icon(Icons.home),
+        )],
+        
+        
+          
+        
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -108,7 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.home),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
