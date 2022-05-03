@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_const
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -49,19 +51,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -77,55 +66,42 @@ class _MyHomePageState extends State<MyHomePage> {
         // leading: Text(widget.title,
         //     style: const TextStyle(color: Colors.green, fontSize: 26.0),
         //     textAlign: TextAlign.left),
-        leading: Image.asset("logo.png"),
+        title: const Text("GharBeti"),
         backgroundColor: Colors.white,
         foregroundColor: Colors.lightGreen,
         elevation: 0,
         leadingWidth: 150.0,
-        actions:const [Padding(
-          padding: EdgeInsets.all(10.0),
-          child: Icon(Icons.home),
-        )],
-        
-        
-          
-        
+        actions: const [
+          Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Icon(Icons.home),
+          )
+        ],
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
+      body: SingleChildScrollView(
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: const [
+            SizedBox(
+              width: 20.0,
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            SizedBox(
+              height: 50.0,
+              width: 400.0,
+              child: TextField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(width: 1),
+                      borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                    ),
+                    hintText: "Search Room, Flat, Appartment, House",
+                    suffixIcon: Icon(Icons.search)),
+              ),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.home),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
