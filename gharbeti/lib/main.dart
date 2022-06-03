@@ -1,9 +1,8 @@
-// ignore_for_file: unnecessary_const
-
 import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:gharbeti/pages/sign_up.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,9 +27,10 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.blueGrey,
       ),
-      home: const MyHomePage(title: 'GharBeti'),
+      home: const SignUp(),
+      // home: const MyHomePage(title: 'GharBeti'),
     );
   }
 }
@@ -130,26 +130,26 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   items: [
                     Container(
-                      color: Color.fromRGBO(255, 87, 34, 1),
+                      color: const Color.fromRGBO(255, 87, 34, 1),
                       child: SizedBox(
                         width: W,
                       ),
                     ),
                     Container(
-                      color: Color.fromARGB(255, 34, 255, 82),
+                      color: const Color.fromARGB(255, 34, 255, 82),
                       child: SizedBox(
                         width: W,
                       ),
                     ),
                     Container(
-                      color: Color.fromARGB(255, 34, 13, 222),
+                      color: const Color.fromARGB(255, 34, 13, 222),
                       child: SizedBox(
                         width: W,
                       ),
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
                 RichText(
@@ -174,7 +174,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
                 const SizedBox(height: 10.0),
@@ -185,35 +185,35 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 100,
                       width: 200,
                       color: Colors.lightGreenAccent,
-                      child: Text("Data"),
+                      child: const Text("Data"),
                     ),
                     const SizedBox(width: 10.0),
                     Container(
                       color: Colors.lightGreenAccent,
                       height: 100,
                       width: 200,
-                      child: Text("Data"),
+                      child: const Text("Data"),
                     ),
                     const SizedBox(width: 10.0),
                     Container(
                       color: Colors.lightGreenAccent,
                       height: 100,
                       width: 200,
-                      child: Text("Data"),
+                      child: const Text("Data"),
                     ),
                     const SizedBox(width: 10.0),
                     Container(
                       color: Colors.lightGreenAccent,
                       height: 100,
                       width: 200,
-                      child: Text("Data"),
+                      child: const Text("Data"),
                     ),
                     const SizedBox(width: 10.0),
                     Container(
                       color: Colors.lightGreenAccent,
                       height: 100,
                       width: 200,
-                      child: Text("Data"),
+                      child: const Text("Data"),
                     ),
                   ]),
                 )
