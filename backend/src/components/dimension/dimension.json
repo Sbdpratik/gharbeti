@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_dimension_dimensions",
+  "info": {
+    "displayName": "dimension",
+    "icon": "arrows-alt",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "length": {
+      "type": "decimal"
+    },
+    "breadth": {
+      "type": "decimal"
+    },
+    "height": {
+      "type": "decimal"
+    }
+  }
+}

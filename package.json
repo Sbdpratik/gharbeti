@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "strapi-plugin-entity-relationship-chart": "^4.1.0"
+  }
+}
