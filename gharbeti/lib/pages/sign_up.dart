@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:math';
+import 'dart:ui';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
@@ -14,14 +15,17 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   bool isPasswordVisible = false;
   bool isCPasswordVisible = false;
+  bool isSubmit = false;
   bool value = false;
   String val = "";
   String? _username, _email, _password, _confirmpass;
   final _formkey = GlobalKey<FormState>();
+  final _scaffoldkey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        key: _scaffoldkey,
         body: Form(
           key: _formkey,
           child: Container(
@@ -81,23 +85,7 @@ class _SignUpState extends State<SignUp> {
                   SizedBox(
                     height: 20,
                   ),
-                  Container(
-                    height: 53,
-                    width: double.infinity,
-                    margin: EdgeInsets.symmetric(horizontal: 30),
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white60),
-                      borderRadius: BorderRadius.circular(30).copyWith(
-                          bottomRight: Radius.circular(0),
-                          topLeft: Radius.circular(0)),
-                    ),
-                    child: Text('Login',
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 25, 22, 69),
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold)),
-                  ),
+                  _loginbutton(context),
                   SizedBox(
                     height: 20,
                   )
@@ -106,6 +94,30 @@ class _SignUpState extends State<SignUp> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  GestureDetector _loginbutton(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushReplacementNamed(context, '/login');
+      },
+      child: Container(
+        height: 53,
+        width: double.infinity,
+        margin: EdgeInsets.symmetric(horizontal: 30),
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.white60),
+          borderRadius: BorderRadius.circular(30).copyWith(
+              bottomRight: Radius.circular(0), topLeft: Radius.circular(0)),
+        ),
+        child: Text('Login',
+            style: TextStyle(
+                color: Color.fromARGB(255, 25, 22, 69),
+                fontSize: 15,
+                fontWeight: FontWeight.bold)),
       ),
     );
   }
@@ -121,6 +133,10 @@ class _SignUpState extends State<SignUp> {
   }
 
   _signupuser() async {
+    setState(() {
+      isSubmit = true;
+      Future.delayed(Duration(seconds: 2));
+    });
     http.Response response = await http
         .post(Uri.parse('http://10.0.2.2:1337/api/auth/local/register'), body: {
       "username": _username,
@@ -129,7 +145,28 @@ class _SignUpState extends State<SignUp> {
       "confirmpass": _confirmpass
     });
     final responseData = json.decode(response.body);
+    _showSnackBar();
+    _redirectuser();
+    setState(() {
+      isSubmit = false;
+    });
     print(responseData);
+  }
+
+  void _redirectuser() {
+    Future.delayed(Duration(seconds: 3), () {
+      Navigator.pushReplacementNamed(context, '/rooms');
+    });
+  }
+
+  void _showSnackBar() {
+    final snackbar = SnackBar(
+        content: Text(
+      '$_username has been created Successfully',
+      style: TextStyle(color: Colors.green),
+    ));
+    _scaffoldkey.currentState!.showSnackBar(snackbar);
+    _formkey.currentState!.reset();
   }
 
   GestureDetector _signupbutton() {
@@ -137,28 +174,33 @@ class _SignUpState extends State<SignUp> {
       onTap: () {
         _submit();
       },
-      child: Container(
-        height: 53,
-        width: double.infinity,
-        margin: EdgeInsets.symmetric(horizontal: 30),
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                  blurRadius: 4,
-                  color: Colors.black12.withOpacity(.2),
-                  offset: Offset(2, 2))
-            ],
-            borderRadius: BorderRadius.circular(30).copyWith(
-                bottomRight: Radius.circular(0), topLeft: Radius.circular(0)),
-            gradient:
-                LinearGradient(colors: [Colors.white, const Color(0x43c6ac)])),
-        child: Text('SignUp',
-            style: TextStyle(
-                color: Color.fromARGB(255, 25, 22, 69),
-                fontSize: 15,
-                fontWeight: FontWeight.bold)),
-      ),
+      child: isSubmit == true
+          ? CircularProgressIndicator.adaptive(
+              valueColor: AlwaysStoppedAnimation(Colors.green),
+            )
+          : Container(
+              height: 53,
+              width: double.infinity,
+              margin: EdgeInsets.symmetric(horizontal: 30),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                        blurRadius: 4,
+                        color: Colors.black12.withOpacity(.2),
+                        offset: Offset(2, 2))
+                  ],
+                  borderRadius: BorderRadius.circular(30).copyWith(
+                      bottomRight: Radius.circular(0),
+                      topLeft: Radius.circular(0)),
+                  gradient: LinearGradient(
+                      colors: [Colors.white, const Color(0x43c6ac)])),
+              child: Text('SignUp',
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 25, 22, 69),
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold)),
+            ),
     );
   }
 
