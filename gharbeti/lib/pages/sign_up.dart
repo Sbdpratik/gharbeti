@@ -4,6 +4,7 @@ import 'dart:math';
 import 'dart:ui';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -147,10 +148,19 @@ class _SignUpState extends State<SignUp> {
     final responseData = json.decode(response.body);
     _showSnackBar();
     _redirectuser();
+    _storeUserData(responseData);
     setState(() {
       isSubmit = false;
     });
     print(responseData);
+  }
+
+//session variable
+  void _storeUserData(responseData) async {
+    final prefs = await SharedPreferences.getInstance();
+    Map<String, dynamic> user = responseData['user'];
+    user.putIfAbsent('jwt', () => responseData['jwt']);
+    prefs.setString('user', jsonEncode(user));
   }
 
   void _redirectuser() {

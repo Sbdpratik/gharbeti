@@ -145,12 +145,12 @@ class _LoginState extends State<Login> {
       });
       _showSnackBar();
       _redirectuser();
+    } else {
+      setState(() {
+        _loading = false;
+      });
+      print(responseData['error']['status']);
     }
-
-    setState(() {
-      _loading = false;
-    });
-    print(responseData);
   }
 
   void _redirectuser() {
