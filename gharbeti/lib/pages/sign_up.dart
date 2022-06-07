@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:math';
 import 'package:http/http.dart' as http;
@@ -113,11 +114,22 @@ class _SignUpState extends State<SignUp> {
     final form = _formkey.currentState;
     if (form!.validate()) {
       form.save();
-      print(
-          'Username: $_username, Email: $_email, pass: $_password, confirm: $_confirmpass');
+      _signupuser();
     } else {
       print("Invalid Form");
     }
+  }
+
+  _signupuser() async {
+    http.Response response = await http
+        .post(Uri.parse('http://10.0.2.2:1337/api/auth/local/register'), body: {
+      "username": _username,
+      "email": _email,
+      "password": _password,
+      "confirmpass": _confirmpass
+    });
+    final responseData = json.decode(response.body);
+    print(responseData);
   }
 
   GestureDetector _signupbutton() {
