@@ -1,0 +1,8 @@
+AppState appReducer(state, action){
+  return AppState(
+    user : userReducer(state.user, action)
+  );
+}
+userReducer(user , action){
+  return user;
+}
