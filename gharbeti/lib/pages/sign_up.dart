@@ -2,6 +2,9 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:math';
 import 'dart:ui';
+import 'package:get/get.dart';
+import 'package:gharbeti/pages/HomePage.dart';
+import 'package:gharbeti/pages/login.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -102,7 +105,8 @@ class _SignUpState extends State<SignUp> {
   GestureDetector _loginbutton(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushReplacementNamed(context, '/login');
+        Get.to(Login());
+        //Navigator.pushReplacementNamed(context, '/login');
       },
       child: Container(
         height: 53,
@@ -165,7 +169,8 @@ class _SignUpState extends State<SignUp> {
 
   void _redirectuser() {
     Future.delayed(Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, '/rooms');
+      Get.to(HomePage());
+      //Navigator.pushReplacementNamed(context, '/rooms');
     });
   }
 
