@@ -2,29 +2,35 @@ import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:gharbeti/pages/DetailPage.dart';
+import 'package:gharbeti/pages/Foodtab.dart';
+import 'package:gharbeti/pages/HomePage.dart';
 import 'package:gharbeti/pages/login.dart';
 import 'package:gharbeti/pages/rooms.dart';
 import 'package:gharbeti/pages/sign_up.dart';
 import 'package:get/get.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'GharBeti',
-      routes: {
-        '/login': (BuildContext context) => Login(),
-        '/signup': (BuildContext context) => SignUp(),
-        '/rooms': (BuildContext context) => RoomsPage(),
-      },
+      initialRoute: "/home",
+      getPages: [
+        GetPage(name: "/", page: () => MyApp()),
+        GetPage(name: "/login", page: () => Login()),
+        GetPage(name: "/rooms", page: () => RoomsPage()),
+        GetPage(name: "/signup", page: () => SignUp()),
+        GetPage(name: "/detail", page: () => DetailPage("ss", 150, "sss")),
+        GetPage(name: "/home", page: () => HomePage()),
+        GetPage(name: "/food", page: () => Foodtab()),
+      ],
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
