@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class DetailPage extends StatefulWidget {
@@ -202,7 +203,7 @@ class _DetailPageState extends State<DetailPage> {
           Row(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Text(
                   price,
                   style: TextStyle(
@@ -212,70 +213,32 @@ class _DetailPageState extends State<DetailPage> {
                 ),
               ),
               Spacer(),
-              Container(
-                height: 82,
-                width: 285.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(10.0),
-                    topLeft: Radius.circular(10.0),
-                  ),
-                  color: Colors.redAccent,
-                ),
-                child: Row(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: Container(
-                        height: 55,
-                        width: 150,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.white,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            IconButton(
-                                icon: Icon(Icons.remove),
-                                color: Colors.redAccent,
-                                onPressed: () {
-                                  if (count > 0) {
-                                    setState(() {
-                                      count--;
-                                    });
-                                  }
-                                }),
-                            Text(
-                              "$count",
-                              style: TextStyle(
-                                  fontSize: 18.0,
-                                  color: Colors.redAccent,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            IconButton(
-                                icon: Icon(Icons.add),
-                                color: Colors.redAccent,
-                                onPressed: () {
-                                  if (count >= 0) {
-                                    setState(() {
-                                      count++;
-                                    });
-                                  }
-                                }),
-                          ],
-                        ),
-                      ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 82,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(10.0),
+                      topLeft: Radius.circular(10.0),
                     ),
-                    Text(
-                      "Add to Card",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.w600,
+                    color: Colors.redAccent,
+                  ),
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Text(
+                          "Inquiry",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
                       ),
-                    )
-                  ],
+                    ],
+                  ),
                 ),
               )
             ],
