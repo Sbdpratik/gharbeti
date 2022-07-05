@@ -3,8 +3,9 @@ import 'dart:developer';
 import 'dart:math';
 import 'dart:ui';
 import 'package:get/get.dart';
-import 'package:gharbeti/pages/HomePage.dart';
+
 import 'package:gharbeti/pages/sign_up.dart';
+import 'package:gharbeti/screen/home/home.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
