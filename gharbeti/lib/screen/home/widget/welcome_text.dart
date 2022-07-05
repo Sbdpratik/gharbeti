@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class WelcomeText extends StatelessWidget {
+  var username = 'Bikash';
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -9,7 +10,7 @@ class WelcomeText extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Hello Ruize',
+            'Hello $username',
             style: Theme.of(context)
                 .textTheme
                 .bodyText1!
