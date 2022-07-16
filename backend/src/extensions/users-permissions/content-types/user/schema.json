@@ -63,11 +63,11 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "rooms": {
+    "properties": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::room.room",
-      "mappedBy": "user"
+      "target": "api::property.property",
+      "mappedBy": "users_permissions_user"
     }
   }
 }

@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * room router.
+ * property router.
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::room.room');
+module.exports = createCoreRouter('api::property.property');

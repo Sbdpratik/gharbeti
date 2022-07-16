@@ -1,0 +1,44 @@
+{
+  "collectionName": "components_roadsize_road_sizes",
+  "info": {
+    "displayName": "Road Size",
+    "icon": "motorcycle"
+  },
+  "options": {},
+  "attributes": {
+    "road_size": {
+      "type": "decimal",
+      "default": 0
+    },
+    "unit": {
+      "type": "enumeration",
+      "enum": [
+        "Feet",
+        "Meter"
+      ],
+      "default": "Feet"
+    },
+    "road_type": {
+      "type": "enumeration",
+      "enum": [
+        "Graveled",
+        "Soil-stabilized",
+        "Paved",
+        "Blacktopped",
+        "Alley"
+      ],
+      "default": "Graveled"
+    },
+    "distance_form_main_road": {
+      "type": "decimal"
+    },
+    "distance_unit": {
+      "type": "enumeration",
+      "enum": [
+        "Feet",
+        "Meter"
+      ],
+      "default": "Feet"
+    }
+  }
+}

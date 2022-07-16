@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_totalarea_total_areas",
+  "info": {
+    "displayName": "Total Area",
+    "icon": "arrows-alt"
+  },
+  "options": {},
+  "attributes": {
+    "area": {
+      "type": "decimal"
+    },
+    "units": {
+      "type": "enumeration",
+      "enum": [
+        "Aana",
+        "Square-feet",
+        "Square-meter"
+      ]
+    }
+  }
+}

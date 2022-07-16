@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_buildingdetails_building_details",
+  "info": {
+    "displayName": "Building Details",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "built_year": {
+      "type": "string"
+    },
+    "total_floors": {
+      "type": "integer"
+    },
+    "furnishing": {
+      "type": "enumeration",
+      "enum": [
+        "Full-Furnished",
+        "Semi-Furnished",
+        "UnFurnished"
+      ]
+    }
+  }
+}

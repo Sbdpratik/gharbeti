@@ -1,0 +1,66 @@
+{
+  "kind": "collectionType",
+  "collectionName": "properties",
+  "info": {
+    "singularName": "property",
+    "pluralName": "properties",
+    "displayName": "Property",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "property_type": {
+      "type": "enumeration",
+      "enum": [
+        "Residental",
+        "Commercial"
+      ],
+      "default": "Residental",
+      "required": true
+    },
+    "property_categories": {
+      "type": "enumeration",
+      "enum": [
+        "House",
+        "Land",
+        "Flat",
+        "Business",
+        "Apt. & Housing",
+        "Room"
+      ],
+      "default": "Room"
+    },
+    "property_title": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "road_size": {
+      "displayName": "Road Size",
+      "type": "component",
+      "repeatable": false,
+      "component": "roadsize.road-size"
+    },
+    "building_details": {
+      "type": "component",
+      "repeatable": false,
+      "component": "buildingdetails.building-details"
+    },
+    "total_area": {
+      "displayName": "Total Area",
+      "type": "component",
+      "repeatable": false,
+      "component": "totalarea.total-area"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "properties"
+    }
+  }
+}
