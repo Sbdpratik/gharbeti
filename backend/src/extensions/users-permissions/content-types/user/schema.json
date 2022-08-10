@@ -67,7 +67,21 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::property.property",
-      "mappedBy": "users_permissions_user"
+      "mappedBy": "property_owner"
+    },
+    "property": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::property.property",
+      "inversedBy": "property_tenants"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "Verified",
+        "Not Verified"
+      ],
+      "default": "Not Verified"
     }
   }
 }

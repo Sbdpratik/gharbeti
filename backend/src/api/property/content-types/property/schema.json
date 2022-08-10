@@ -56,11 +56,24 @@
       "repeatable": false,
       "component": "totalarea.total-area"
     },
-    "users_permissions_user": {
+    "property_owner": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "properties"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "Available",
+        "Not Available"
+      ]
+    },
+    "property_tenants": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "property"
     }
   }
 }
