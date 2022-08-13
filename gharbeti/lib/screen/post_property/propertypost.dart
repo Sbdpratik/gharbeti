@@ -11,6 +11,16 @@ class _PostPropertyState extends State<PostProperty> {
   int _activeStepIndex = 0;
   String propertyType = "Residental";
   String propertyCategory = "Room";
+  String defaultRoadType = 'Gravelled';
+
+  // List of items in our dropdown menu
+  var roadType = [
+    'Gravelled',
+    'Soil-stabilized',
+    'Paved',
+    'Blacktopped',
+    'Alley',
+  ];
   TextEditingController propertyTitle = TextEditingController();
   TextEditingController roadSize = TextEditingController();
   TextEditingController roadDist = TextEditingController();
@@ -164,6 +174,28 @@ class _PostPropertyState extends State<PostProperty> {
                       labelText: 'Road Size',
                     ),
                   ),
+                  DropdownButton(
+                    // Initial Value
+                    value: defaultRoadType,
+
+                    // Down Arrow Icon
+                    icon: const Icon(Icons.keyboard_arrow_down),
+
+                    // Array list of items
+                    items: roadType.map((String items) {
+                      return DropdownMenuItem(
+                        value: items,
+                        child: Text(items),
+                      );
+                    }).toList(),
+                    // After selecting the desired option,it will
+                    // change button value to selected value
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        defaultRoadType = newValue!;
+                      });
+                    },
+                  ),
                 ],
               ),
             )),
@@ -181,6 +213,7 @@ class _PostPropertyState extends State<PostProperty> {
                 Text('Property Title: ${propertyTitle.text}'),
                 Text('Address : ${address.text}'),
                 Text('Road Size : ${roadSize.text}'),
+                Text('Road Type : ${defaultRoadType}'),
               ],
             )))
       ];
