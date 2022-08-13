@@ -169,7 +169,7 @@ class _LoginState extends State<Login> {
 
   void _redirectuser() {
     Future.delayed(Duration(seconds: 3), () {
-      Get.to(HomePage());
+      Get.off(HomePage());
       //Navigator.pushReplacementNamed(context, '/rooms');
     });
   }

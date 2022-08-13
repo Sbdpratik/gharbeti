@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   final bottomBarItem = ['home', 'chat', 'plus', 'notification', 'home_mark'];
@@ -19,14 +20,39 @@ class CustomBottomNavigationBar extends StatelessWidget {
               offset: Offset(0, 3),
             )
           ]),
-      child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: bottomBarItem
-              .map((e) => SvgPicture.asset(
-                    'assets/icons/$e.svg',
-                    color: Theme.of(context).primaryColor,
-                  ))
-              .toList()),
+      child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+        SvgPicture.asset(
+          'assets/icons/home.svg',
+          color: Theme.of(context).primaryColor,
+        ),
+        SvgPicture.asset(
+          'assets/icons/chat.svg',
+          color: Theme.of(context).primaryColor,
+        ),
+        GestureDetector(
+          onTap: () {
+            Get.toNamed('/postproperty');
+          },
+          child: SvgPicture.asset(
+            'assets/icons/plus.svg',
+            color: Theme.of(context).primaryColor,
+          ),
+        ),
+        SvgPicture.asset(
+          'assets/icons/notification.svg',
+          color: Theme.of(context).primaryColor,
+        ),
+        SvgPicture.asset(
+          'assets/icons/home_mark.svg',
+          color: Theme.of(context).primaryColor,
+        ),
+      ]),
+      //     bottomBarItem
+      // .map((e) => SvgPicture.asset(
+      //       'assets/icons/$e.svg',
+      //       color: Theme.of(context).primaryColor,
+      //     ))
+      // .toList()),
     );
   }
 }

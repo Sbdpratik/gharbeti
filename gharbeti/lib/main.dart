@@ -8,6 +8,7 @@ import 'package:gharbeti/pages/login.dart';
 import 'package:gharbeti/pages/sign_up.dart';
 import 'package:get/get.dart';
 import 'package:gharbeti/screen/home/home.dart';
+import 'package:gharbeti/screen/post_property/propertypost.dart';
 import 'package:gharbeti/screen/profile/editprofilepage.dart';
 import 'package:gharbeti/screen/profile/profile.dart';
 import 'package:gharbeti/screen/profile/setting.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/editprofile", page: () => EditProfilePage()),
         GetPage(name: "/setting", page: () => SettingsPage()),
         GetPage(name: "/profile", page: () => ProfileScreen()),
+        GetPage(name: "/postproperty", page: () => PostProperty()),
       ],
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
