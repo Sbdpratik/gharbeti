@@ -21,7 +21,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               tag: 'profile',
               child: GestureDetector(
                 onTap: () {
-                  Get.toNamed('/editprofile');
+                  Get.toNamed('/profile');
                 },
                 child: CircleAvatar(
                     backgroundImage: NetworkImage(

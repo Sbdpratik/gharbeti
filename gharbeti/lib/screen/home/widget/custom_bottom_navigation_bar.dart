@@ -2,18 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
-  final bottomBarItem = [
-    'home',
-    'home_search',
-    'notification',
-    'chat',
-    'home_mark'
-  ];
+  final bottomBarItem = ['home', 'chat', 'plus', 'notification', 'home_mark'];
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 25),
-      padding: EdgeInsets.symmetric(vertical: 15),
+      padding: EdgeInsets.symmetric(vertical: 5),
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(30),
