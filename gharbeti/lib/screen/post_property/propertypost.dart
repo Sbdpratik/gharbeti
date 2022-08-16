@@ -11,9 +11,11 @@ class _PostPropertyState extends State<PostProperty> {
   int _activeStepIndex = 0;
   String propertyType = "Residental";
   String propertyCategory = "Room";
-  String defaultRoadType = 'Gravelled';
+  String selectedRoadType = 'Gravelled';
+  String selectedRoadUnit = 'ft';
 
   // List of items in our dropdown menu
+
   var roadType = [
     'Gravelled',
     'Soil-stabilized',
@@ -176,7 +178,7 @@ class _PostPropertyState extends State<PostProperty> {
                   ),
                   DropdownButton(
                     // Initial Value
-                    value: defaultRoadType,
+                    value: selectedRoadType,
 
                     // Down Arrow Icon
                     icon: const Icon(Icons.keyboard_arrow_down),
@@ -192,7 +194,7 @@ class _PostPropertyState extends State<PostProperty> {
                     // change button value to selected value
                     onChanged: (String? newValue) {
                       setState(() {
-                        defaultRoadType = newValue!;
+                        selectedRoadType = newValue!;
                       });
                     },
                   ),
@@ -213,7 +215,7 @@ class _PostPropertyState extends State<PostProperty> {
                 Text('Property Title: ${propertyTitle.text}'),
                 Text('Address : ${address.text}'),
                 Text('Road Size : ${roadSize.text}'),
-                Text('Road Type : ${defaultRoadType}'),
+                Text('Road Type : ${selectedRoadType}'),
               ],
             )))
       ];
