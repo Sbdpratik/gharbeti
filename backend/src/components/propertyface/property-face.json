@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_propertyface_property_faces",
+  "info": {
+    "displayName": "Property Face",
+    "icon": "angry"
+  },
+  "options": {},
+  "attributes": {
+    "property_face": {
+      "type": "enumeration",
+      "enum": [
+        "East",
+        "West",
+        "North",
+        "South",
+        "South-East",
+        "South-West",
+        "North-East",
+        "North-West"
+      ],
+      "default": "East"
+    }
+  }
+}

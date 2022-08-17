@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_ownerdetails_owner_details",
+  "info": {
+    "displayName": "Owner Details",
+    "icon": "user-tie"
+  },
+  "options": {},
+  "attributes": {
+    "OwnerName": {
+      "type": "string"
+    },
+    "OwnerPhone": {
+      "type": "biginteger"
+    }
+  }
+}

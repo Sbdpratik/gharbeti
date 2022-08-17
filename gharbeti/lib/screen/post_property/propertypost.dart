@@ -15,7 +15,10 @@ class _PostPropertyState extends State<PostProperty> {
   String selectedRoadUnit = 'ft';
 
   // List of items in our dropdown menu
-
+  var roadUnit = [
+    'ft',
+    'm',
+  ];
   var roadType = [
     'Gravelled',
     'Soil-stabilized',
@@ -176,27 +179,56 @@ class _PostPropertyState extends State<PostProperty> {
                       labelText: 'Road Size',
                     ),
                   ),
-                  DropdownButton(
-                    // Initial Value
-                    value: selectedRoadType,
+                  Row(
+                    children: [
+                      DropdownButton(
+                        // Initial Value
+                        value: selectedRoadUnit,
 
-                    // Down Arrow Icon
-                    icon: const Icon(Icons.keyboard_arrow_down),
+                        // Down Arrow Icon
+                        icon: const Icon(Icons.keyboard_arrow_down),
 
-                    // Array list of items
-                    items: roadType.map((String items) {
-                      return DropdownMenuItem(
-                        value: items,
-                        child: Text(items),
-                      );
-                    }).toList(),
-                    // After selecting the desired option,it will
-                    // change button value to selected value
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        selectedRoadType = newValue!;
-                      });
-                    },
+                        // Array list of items
+                        items: roadUnit.map((String items) {
+                          return DropdownMenuItem(
+                            value: items,
+                            child: Text(items),
+                          );
+                        }).toList(),
+                        // After selecting the desired option,it will
+                        // change button value to selected value
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            selectedRoadUnit = newValue!;
+                          });
+                        },
+                      ),
+                      SizedBox(
+                        width: 60,
+                      ),
+                      DropdownButton(
+                        // Initial Value
+                        value: selectedRoadType,
+
+                        // Down Arrow Icon
+                        icon: const Icon(Icons.keyboard_arrow_down),
+
+                        // Array list of items
+                        items: roadType.map((String items) {
+                          return DropdownMenuItem(
+                            value: items,
+                            child: Text(items),
+                          );
+                        }).toList(),
+                        // After selecting the desired option,it will
+                        // change button value to selected value
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            selectedRoadType = newValue!;
+                          });
+                        },
+                      ),
+                    ],
                   ),
                 ],
               ),
