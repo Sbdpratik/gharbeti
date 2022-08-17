@@ -82,6 +82,13 @@
         "Not Verified"
       ],
       "default": "Not Verified"
+    },
+    "profile_img": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

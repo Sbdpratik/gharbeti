@@ -34,7 +34,8 @@
       "default": "Room"
     },
     "property_title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "address": {
       "type": "string"
@@ -67,13 +68,57 @@
       "enum": [
         "Available",
         "Not Available"
-      ]
+      ],
+      "default": "Available"
     },
     "property_tenants": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "plugin::users-permissions.user",
       "mappedBy": "property"
+    },
+    "built_up_area": {
+      "type": "component",
+      "repeatable": false,
+      "component": "builtuparea.built-up-area"
+    },
+    "property_face": {
+      "type": "component",
+      "repeatable": false,
+      "component": "propertyface.property-face"
+    },
+    "no_of_room": {
+      "type": "component",
+      "repeatable": false,
+      "component": "noofroom.no-of-rooms"
+    },
+    "amenities": {
+      "type": "component",
+      "repeatable": false,
+      "component": "amenities.amenities"
+    },
+    "description": {
+      "type": "component",
+      "repeatable": false,
+      "component": "propertydescription.property-description"
+    },
+    "owner_details": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ownerdetails.owner-details"
+    },
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Price": {
+      "type": "component",
+      "repeatable": false,
+      "component": "pricedetails.price-details"
     }
   }
 }

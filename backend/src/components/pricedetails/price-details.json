@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_pricedetails_price_details",
+  "info": {
+    "displayName": "price details",
+    "icon": "money-bill-alt",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "price": {
+      "type": "decimal"
+    },
+    "Price_label": {
+      "type": "enumeration",
+      "enum": [
+        "per-month",
+        "per-square-feet",
+        "per-ropani",
+        "per-aana",
+        "per-bigha",
+        "per-kattha",
+        "per-dhur",
+        "per-haat",
+        "per-acres"
+      ],
+      "default": "per-month"
+    },
+    "Negotiable": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

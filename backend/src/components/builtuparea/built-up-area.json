@@ -1,16 +1,16 @@
 {
-  "collectionName": "components_totalarea_total_areas",
+  "collectionName": "components_builtuparea_built_up_areas",
   "info": {
-    "displayName": "Total Area",
+    "displayName": "Built Up Area",
     "icon": "arrows-alt",
     "description": ""
   },
   "options": {},
   "attributes": {
-    "area": {
-      "type": "decimal"
+    "built_up_area": {
+      "type": "float"
     },
-    "units": {
+    "area_unit": {
       "type": "enumeration",
       "enum": [
         "Aana",

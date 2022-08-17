@@ -1,0 +1,82 @@
+{
+  "collectionName": "components_amenities_amenities_s",
+  "info": {
+    "displayName": "Amenities ",
+    "icon": "american-sign-language-interpreting"
+  },
+  "options": {},
+  "attributes": {
+    "air_conditioner": {
+      "type": "boolean",
+      "default": false
+    },
+    "Security": {
+      "type": "boolean",
+      "default": false
+    },
+    "Parking": {
+      "type": "boolean",
+      "default": false
+    },
+    "WiFi": {
+      "type": "boolean",
+      "default": false
+    },
+    "Balcony": {
+      "type": "boolean",
+      "default": false
+    },
+    "Water_supply": {
+      "type": "boolean",
+      "default": false
+    },
+    "Gym": {
+      "type": "boolean",
+      "default": false
+    },
+    "Swimming_pool": {
+      "type": "boolean",
+      "default": false
+    },
+    "Tv_Cable": {
+      "type": "boolean",
+      "default": false
+    },
+    "Laundry": {
+      "type": "boolean",
+      "default": false
+    },
+    "Lift": {
+      "type": "boolean",
+      "default": false
+    },
+    "Fire_Place": {
+      "type": "boolean",
+      "default": false
+    },
+    "Garden": {
+      "type": "boolean",
+      "default": false
+    },
+    "Solar": {
+      "type": "boolean",
+      "default": false
+    },
+    "Modular_kitchen": {
+      "type": "boolean",
+      "default": false
+    },
+    "Drainage": {
+      "type": "boolean",
+      "default": false
+    },
+    "Public_Transport": {
+      "type": "boolean",
+      "default": false
+    },
+    "General_Store": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
