@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "rental_details",
+  "info": {
+    "singularName": "rental-detail",
+    "pluralName": "rental-details",
+    "displayName": "Rental Detail",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "property": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::property.property",
+      "inversedBy": "rental_details"
+    },
+    "rent": {
+      "type": "integer"
+    },
+    "water": {
+      "type": "decimal"
+    },
+    "Electricity": {
+      "type": "decimal"
+    },
+    "Solar": {
+      "type": "decimal"
+    },
+    "Internet": {
+      "type": "decimal"
+    },
+    "Sanitation": {
+      "type": "decimal"
+    },
+    "date": {
+      "type": "date"
+    },
+    "received_amt": {
+      "type": "decimal"
+    },
+    "received_date": {
+      "type": "date"
+    },
+    "previous_balance": {
+      "type": "decimal"
+    },
+    "total": {
+      "type": "decimal"
+    },
+    "balance": {
+      "type": "decimal"
+    }
+  }
+}
