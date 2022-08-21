@@ -119,6 +119,12 @@
       "type": "component",
       "repeatable": false,
       "component": "pricedetails.price-details"
+    },
+    "rental_details": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::rental-detail.rental-detail",
+      "mappedBy": "property"
     }
   }
 }
