@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:get/get.dart';
+import 'package:gharbeti/screen/home/widget/best_offer.dart';
 
 class ProfileScreen extends StatelessWidget {
   @override
@@ -31,7 +32,7 @@ class ProfileScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       GestureDetector(
                         onTap: () {
@@ -39,6 +40,15 @@ class ProfileScreen extends StatelessWidget {
                         },
                         child: Icon(
                           AntDesign.arrowleft,
+                          color: Colors.white,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: Icon(
+                          AntDesign.logout,
                           color: Colors.white,
                         ),
                       ),
@@ -79,86 +89,100 @@ class ProfileScreen extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(30),
                                   color: Colors.white,
                                 ),
-                                child: Column(
-                                  children: [
-                                    SizedBox(
-                                      height: 80,
-                                    ),
-                                    Text(
-                                      'Bikash Gupta',
-                                      style: TextStyle(
-                                        color: Color.fromRGBO(39, 105, 171, 1),
-                                        fontFamily: 'Nunito',
-                                        fontSize: 37,
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    children: [
+                                      SizedBox(
+                                        height: 80,
                                       ),
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Column(
-                                          children: [
-                                            Text(
-                                              'Orders',
-                                              style: TextStyle(
-                                                color: Colors.grey[700],
-                                                fontFamily: 'Nunito',
-                                                fontSize: 25,
-                                              ),
-                                            ),
-                                            Text(
-                                              '10',
-                                              style: TextStyle(
-                                                color: Color.fromRGBO(
-                                                    39, 105, 171, 1),
-                                                fontFamily: 'Nunito',
-                                                fontSize: 25,
-                                              ),
-                                            ),
-                                          ],
+                                      Text(
+                                        'Bikash Gupta',
+                                        style: TextStyle(
+                                          color:
+                                              Color.fromRGBO(39, 105, 171, 1),
+                                          fontFamily: 'Nunito',
+                                          fontSize: 37,
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                            horizontal: 25,
-                                            vertical: 8,
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          Text("gbikash34@gmail.com"),
+                                          Text("Buddhanilkantha, Kathmandu"),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Column(
+                                            children: [
+                                              Text(
+                                                'Properties',
+                                                style: TextStyle(
+                                                  color: Colors.grey[700],
+                                                  fontFamily: 'Nunito',
+                                                  fontSize: 25,
+                                                ),
+                                              ),
+                                              Text(
+                                                '10',
+                                                style: TextStyle(
+                                                  color: Color.fromRGBO(
+                                                      39, 105, 171, 1),
+                                                  fontFamily: 'Nunito',
+                                                  fontSize: 25,
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                          child: Container(
-                                            height: 50,
-                                            width: 3,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(100),
-                                              color: Colors.grey,
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: 25,
+                                              vertical: 8,
+                                            ),
+                                            child: Container(
+                                              height: 50,
+                                              width: 3,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(100),
+                                                color: Colors.grey,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        Column(
-                                          children: [
-                                            Text(
-                                              'Pending',
-                                              style: TextStyle(
-                                                color: Colors.grey[700],
-                                                fontFamily: 'Nunito',
-                                                fontSize: 25,
+                                          Column(
+                                            children: [
+                                              Text(
+                                                'Rent',
+                                                style: TextStyle(
+                                                  color: Colors.grey[700],
+                                                  fontFamily: 'Nunito',
+                                                  fontSize: 25,
+                                                ),
                                               ),
-                                            ),
-                                            Text(
-                                              '1',
-                                              style: TextStyle(
-                                                color: Color.fromRGBO(
-                                                    39, 105, 171, 1),
-                                                fontFamily: 'Nunito',
-                                                fontSize: 25,
+                                              Text(
+                                                '1',
+                                                style: TextStyle(
+                                                  color: Color.fromRGBO(
+                                                      39, 105, 171, 1),
+                                                  fontFamily: 'Nunito',
+                                                  fontSize: 25,
+                                                ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    )
-                                  ],
+                                            ],
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -205,52 +229,40 @@ class ProfileScreen extends StatelessWidget {
                   SizedBox(
                     height: 30,
                   ),
-                  Container(
-                    height: height * 0.5,
-                    width: width,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: Colors.white,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: 20,
+                  SingleChildScrollView(
+                    child: Container(
+                      height: height * 0.5,
+                      width: width,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: Colors.white,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Text(
+                                'My Properties',
+                                style: TextStyle(
+                                  color: Color.fromRGBO(39, 105, 171, 1),
+                                  fontSize: 27,
+                                  fontFamily: 'Nunito',
+                                ),
+                              ),
+                              Divider(
+                                thickness: 2.5,
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              BestOffer(),
+                            ],
                           ),
-                          Text(
-                            'My Orders',
-                            style: TextStyle(
-                              color: Color.fromRGBO(39, 105, 171, 1),
-                              fontSize: 27,
-                              fontFamily: 'Nunito',
-                            ),
-                          ),
-                          Divider(
-                            thickness: 2.5,
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Container(
-                            height: height * 0.15,
-                            decoration: BoxDecoration(
-                              color: Colors.grey,
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Container(
-                            height: height * 0.15,
-                            decoration: BoxDecoration(
-                              color: Colors.grey,
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
                     ),
                   )
