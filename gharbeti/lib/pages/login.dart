@@ -139,11 +139,12 @@ class _LoginState extends State<Login> {
       _loading = true;
       Future.delayed(Duration(seconds: 2));
     });
-    http.Response response = await http
-        .post(Uri.parse('http://10.0.2.2:1337/api/auth/local/'), body: {
-      "identifier": _email,
-      "password": _password,
-    });
+    http.Response response = await http.post(
+        Uri.parse('https://gharbeti8.herokuapp.com/api/auth/local/'),
+        body: {
+          "identifier": _email,
+          "password": _password,
+        });
     final responseData = json.decode(response.body);
     if (response.statusCode == 200) {
       setState(() {

@@ -142,13 +142,14 @@ class _SignUpState extends State<SignUp> {
       isSubmit = true;
       Future.delayed(Duration(seconds: 2));
     });
-    http.Response response = await http
-        .post(Uri.parse('http://10.0.2.2:1337/api/auth/local/register'), body: {
-      "username": _username,
-      "email": _email,
-      "password": _password,
-      "confirmpass": _confirmpass
-    });
+    http.Response response = await http.post(
+        Uri.parse('https://gharbeti8.herokuapp.com/api/auth/local/register'),
+        body: {
+          "username": _username,
+          "email": _email,
+          "password": _password,
+          "confirmpass": _confirmpass
+        });
     final responseData = json.decode(response.body);
     _showSnackBar();
     _redirectuser();
