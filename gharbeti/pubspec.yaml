@@ -42,6 +42,9 @@ dependencies:
   shared_preferences: ^2.0.15
   get: ^4.6.5
   flutter_vector_icons: ^1.0.0
+  editable: ^2.0.0
+  table_sticky_headers: ^2.0.1
+  data_table_2: ^2.3.6
 dev_dependencies:
   flutter_test:
     sdk: flutter

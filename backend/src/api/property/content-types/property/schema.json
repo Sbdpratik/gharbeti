@@ -115,7 +115,7 @@
         "images"
       ]
     },
-    "Price": {
+    "price": {
       "type": "component",
       "repeatable": false,
       "component": "pricedetails.price-details"
