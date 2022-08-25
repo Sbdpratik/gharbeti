@@ -13,9 +13,14 @@ class _PostPropertyState extends State<PostProperty> {
   String propertyCategory = "Room";
   String selectedRoadType = 'Gravelled';
   String selectedRoadUnit = 'ft';
+  String selectedRoadDistUnit = 'ft';
 
   // List of items in our dropdown menu
   var roadUnit = [
+    'ft',
+    'm',
+  ];
+  var roadDistUnit = [
     'ft',
     'm',
   ];
@@ -162,7 +167,7 @@ class _PostPropertyState extends State<PostProperty> {
             state:
                 _activeStepIndex <= 1 ? StepState.editing : StepState.complete,
             isActive: _activeStepIndex >= 1,
-            title: const Text('Property Background'),
+            title: const Text('Road Size'),
             content: Container(
               child: Column(
                 children: [
@@ -230,15 +235,44 @@ class _PostPropertyState extends State<PostProperty> {
                       ),
                     ],
                   ),
+                  TextField(
+                    controller: roadDist,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Distance from Main Road',
+                    ),
+                  ),
+                  DropdownButton(
+                    // Initial Value
+                    value: selectedRoadDistUnit,
+
+                    // Down Arrow Icon
+                    icon: const Icon(Icons.keyboard_arrow_down),
+
+                    // Array list of items
+                    items: roadDistUnit.map((String items) {
+                      return DropdownMenuItem(
+                        value: items,
+                        child: Text(items),
+                      );
+                    }).toList(),
+                    // After selecting the desired option,it will
+                    // change button value to selected value
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        selectedRoadDistUnit = newValue!;
+                      });
+                    },
+                  ),
                 ],
               ),
             )),
         Step(
-            state: StepState.complete,
-            isActive: _activeStepIndex >= 2,
-            title: const Text('Submit'),
-            content: Container(
-                child: Column(
+          state: StepState.complete,
+          isActive: _activeStepIndex >= 2,
+          title: const Text('Submit'),
+          content: Container(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -246,10 +280,14 @@ class _PostPropertyState extends State<PostProperty> {
                 Text('Property Category: ${propertyCategory}'),
                 Text('Property Title: ${propertyTitle.text}'),
                 Text('Address : ${address.text}'),
-                Text('Road Size : ${roadSize.text}'),
+                Text('Road Size : ${roadSize.text} ${selectedRoadUnit}'),
                 Text('Road Type : ${selectedRoadType}'),
+                Text(
+                    'Distance from Main Road: ${roadDist.text} ${selectedRoadDistUnit}'),
               ],
-            )))
+            ),
+          ),
+        ),
       ];
 
   @override
