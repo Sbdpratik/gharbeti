@@ -8,7 +8,8 @@
   "options": {},
   "attributes": {
     "built_up_area": {
-      "type": "float"
+      "type": "float",
+      "default": 0
     },
     "area_unit": {
       "type": "enumeration",

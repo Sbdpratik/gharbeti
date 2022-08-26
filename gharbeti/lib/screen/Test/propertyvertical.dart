@@ -6,16 +6,17 @@ import 'package:gharbeti/controller/property_controller.dart';
 import 'package:gharbeti/model/house.dart';
 import 'package:gharbeti/model/property.dart';
 import 'package:gharbeti/screen/detail/detail.dart';
+import 'package:gharbeti/screen/detail/property_detail.dart';
 import 'package:gharbeti/widget/circle_icon_button.dart';
 
-class PropertyList extends StatefulWidget {
-  const PropertyList({Key? key}) : super(key: key);
+class PropertyVerticalList extends StatefulWidget {
+  const PropertyVerticalList({Key? key}) : super(key: key);
 
   @override
-  State<PropertyList> createState() => _PropertyListState();
+  State<PropertyVerticalList> createState() => _PropertyVerticalListState();
 }
 
-class _PropertyListState extends State<PropertyList> {
+class _PropertyVerticalListState extends State<PropertyVerticalList> {
   PropertyController propertyController = Get.put(PropertyController());
 
   @override
@@ -31,9 +32,8 @@ class _PropertyListState extends State<PropertyList> {
         () => propertyController.isDataLoading.value == true
             ? Center(child: CircularProgressIndicator.adaptive())
             : Container(
-                height: 280,
                 child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
+                  scrollDirection: Axis.vertical,
                   shrinkWrap: true,
                   itemBuilder: (context, i) {
                     String? propertyCategories;
@@ -42,8 +42,11 @@ class _PropertyListState extends State<PropertyList> {
                     String? status;
                     String? imgURL;
                     String? roadSize;
+                    String? id;
 
                     try {
+                      id = propertyController.propertyList!.data![i].id
+                          .toString();
                       propertyTitle = propertyController
                           .propertyList!.data![i].attributes!.propertyTitle!;
                       propertyCategories = propertyController.propertyList!
@@ -66,10 +69,10 @@ class _PropertyListState extends State<PropertyList> {
                     }
                     return GestureDetector(
                       onTap: () {
-                        print('${propertyTitle} is Clicked');
+                        Get.toNamed('/propertydetails/${id}');
                       },
                       child: Container(
-                        width: 210,
+                        margin: EdgeInsets.only(bottom: 10),
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                             color: Colors.white,
@@ -80,61 +83,59 @@ class _PropertyListState extends State<PropertyList> {
                           },
                           child: Stack(
                             children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        image: NetworkImage(imgURL),
-                                        fit: BoxFit.cover)),
-                              ),
-                              Positioned(
-                                right: 15,
-                                top: 15,
-                                child: CircleIconButton(
-                                    iconUrl: 'assets/icons/mark.svg',
-                                    color: Theme.of(context).accentColor),
-                              ),
-                              Positioned(
-                                  bottom: 0,
-                                  left: 0,
-                                  right: 0,
-                                  child: Container(
-                                    color: Colors.white54,
-                                    padding: EdgeInsets.all(10),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                              GestureDetector(
+                                onTap: () {
+                                  print('${propertyTitle} is Clicked');
+                                },
+                                child: Row(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {},
+                                      child: Container(
+                                        width: 150,
+                                        height: 80,
+                                        decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                                image: NetworkImage(imgURL),
+                                                fit: BoxFit.cover),
+                                            borderRadius:
+                                                BorderRadius.circular(8)),
+                                      ),
+                                    ),
+                                    SizedBox(width: 10),
+                                    Column(
                                       children: [
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(propertyTitle,
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .headline1!
-                                                    .copyWith(
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                            FontWeight.bold)),
-                                            SizedBox(
-                                              height: 5,
-                                            ),
-                                            Text(
-                                              address,
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyText1!
-                                                  .copyWith(
-                                                      fontSize: 12,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                            )
-                                          ],
+                                        Text(
+                                          propertyTitle,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline1!
+                                              .copyWith(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.bold),
                                         ),
+                                        SizedBox(height: 10),
+                                        Text(
+                                          address,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText1!
+                                              .copyWith(fontSize: 12),
+                                        ),
+                                        SizedBox(height: 10),
                                         Text(status),
                                       ],
                                     ),
-                                  ))
+                                  ],
+                                ),
+                              ),
+                              Positioned(
+                                right: 0,
+                                child: CircleIconButton(
+                                  iconUrl: 'assets/icons/heart.svg',
+                                  color: Colors.grey,
+                                ),
+                              )
                             ],
                           ),
                         ),

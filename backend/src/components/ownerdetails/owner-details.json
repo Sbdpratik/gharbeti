@@ -2,15 +2,18 @@
   "collectionName": "components_ownerdetails_owner_details",
   "info": {
     "displayName": "Owner Details",
-    "icon": "user-tie"
+    "icon": "user-tie",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "OwnerName": {
-      "type": "string"
+      "type": "string",
+      "default": "Unknown"
     },
     "OwnerPhone": {
-      "type": "biginteger"
+      "type": "biginteger",
+      "default": "9999999999"
     }
   }
 }

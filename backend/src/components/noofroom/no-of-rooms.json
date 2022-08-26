@@ -2,24 +2,30 @@
   "collectionName": "components_noofroom_no_of_rooms",
   "info": {
     "displayName": "No of Rooms",
-    "icon": "archive"
+    "icon": "archive",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "bedrooms": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0
     },
     "kitchens": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0
     },
     "livingroom": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0
     },
     "bathroom": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0
     },
     "parking": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0
     }
   }
 }

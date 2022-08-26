@@ -35,10 +35,12 @@
     },
     "property_title": {
       "type": "string",
-      "required": true
+      "required": true,
+      "default": "unnamed"
     },
     "address": {
-      "type": "string"
+      "type": "string",
+      "default": "unnamed"
     },
     "road_size": {
       "displayName": "Road Size",
@@ -71,12 +73,6 @@
       ],
       "default": "Available"
     },
-    "property_tenants": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "plugin::users-permissions.user",
-      "mappedBy": "property"
-    },
     "built_up_area": {
       "type": "component",
       "repeatable": false,
@@ -107,24 +103,14 @@
       "repeatable": false,
       "component": "ownerdetails.owner-details"
     },
-    "image": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
     "price": {
       "type": "component",
       "repeatable": false,
       "component": "pricedetails.price-details"
     },
-    "rental_details": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::rental-detail.rental-detail",
-      "mappedBy": "property"
+    "image_url": {
+      "type": "string",
+      "default": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmVhdXRpZnVsJTIwaG91c2V8ZW58MHx8MHx8&auto=format&fit=crop&w=700&q=60"
     }
   }
 }

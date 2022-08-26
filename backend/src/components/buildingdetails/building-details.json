@@ -7,10 +7,12 @@
   "options": {},
   "attributes": {
     "built_year": {
-      "type": "string"
+      "type": "string",
+      "default": "2000"
     },
     "total_floors": {
-      "type": "integer"
+      "type": "integer",
+      "default": 1
     },
     "furnishing": {
       "type": "enumeration",
@@ -18,7 +20,8 @@
         "Full-Furnished",
         "Semi-Furnished",
         "UnFurnished"
-      ]
+      ],
+      "default": "UnFurnished"
     }
   }
 }

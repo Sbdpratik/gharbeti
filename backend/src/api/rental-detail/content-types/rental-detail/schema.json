@@ -12,12 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "property": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::property.property",
-      "inversedBy": "rental_details"
-    },
     "rent": {
       "type": "integer"
     },

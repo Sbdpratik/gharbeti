@@ -8,8 +8,10 @@ import 'package:gharbeti/pages/login.dart';
 import 'package:gharbeti/pages/sign_up.dart';
 import 'package:get/get.dart';
 import 'package:gharbeti/screen/Test/propertytestlist.dart';
+import 'package:gharbeti/screen/detail/property_detail.dart';
 import 'package:gharbeti/screen/home/home.dart';
 import 'package:gharbeti/screen/post_property/propertypost.dart';
+import 'package:gharbeti/screen/post_property/upload_image.dart';
 import 'package:gharbeti/screen/profile/editprofilepage.dart';
 import 'package:gharbeti/screen/profile/profile.dart';
 import 'package:gharbeti/screen/profile/setting.dart';
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'GharBeti',
-      initialRoute: "/postproperty",
+      initialRoute: "/home",
       getPages: [
         GetPage(name: "/", page: () => MyApp()),
         GetPage(name: "/login", page: () => Login()),
@@ -38,6 +40,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/postproperty", page: () => PostProperty()),
         GetPage(name: "/rentalreport", page: () => RentalReport()),
         GetPage(name: "/propertylist", page: () => PropertyList()),
+        GetPage(name: "/uploadimage", page: () => UploadImageScreen()),
+        GetPage(name: "/propertydetail", page: () => PropertyDetail()),
       ],
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,

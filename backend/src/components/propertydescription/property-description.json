@@ -2,12 +2,14 @@
   "collectionName": "components_propertydescription_property_descriptions",
   "info": {
     "displayName": "Property Description",
-    "icon": "hashtag"
+    "icon": "hashtag",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "description": {
-      "type": "richtext"
+      "type": "richtext",
+      "default": "Description of the property"
     }
   }
 }

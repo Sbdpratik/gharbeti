@@ -8,7 +8,8 @@
   "options": {},
   "attributes": {
     "price": {
-      "type": "decimal"
+      "type": "decimal",
+      "default": 0
     },
     "Price_label": {
       "type": "enumeration",

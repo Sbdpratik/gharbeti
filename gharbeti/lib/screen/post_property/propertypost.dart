@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class PostProperty extends StatefulWidget {
   const PostProperty({Key? key}) : super(key: key);
@@ -241,6 +242,8 @@ class _PostPropertyState extends State<PostProperty> {
   TextEditingController ownerName = TextEditingController();
   TextEditingController ownerPhone = TextEditingController();
   TextEditingController price = TextEditingController();
+  TextEditingController description = TextEditingController();
+  TextEditingController imgURL = TextEditingController();
   List<Step> stepList() => [
         Step(
           state: _activeStepIndex <= 0 ? StepState.editing : StepState.complete,
@@ -369,542 +372,557 @@ class _PostPropertyState extends State<PostProperty> {
           ),
         ),
         Step(
-            state:
-                _activeStepIndex <= 1 ? StepState.editing : StepState.complete,
-            isActive: _activeStepIndex >= 1,
-            title: const Text('Property Background'),
-            content: Container(
-              child: Column(
-                children: [
-                  const SizedBox(
-                    height: 8,
+          state: _activeStepIndex <= 1 ? StepState.editing : StepState.complete,
+          isActive: _activeStepIndex >= 1,
+          title: const Text('Property Background'),
+          content: Container(
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 8,
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                TextField(
+                  controller: roadSize,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Road Size',
                   ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  TextField(
-                    controller: roadSize,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Road Size',
+                ),
+                Row(
+                  children: [
+                    DropdownButton(
+                      // Initial Value
+                      value: selectedRoadUnit,
+
+                      // Down Arrow Icon
+                      icon: const Icon(Icons.keyboard_arrow_down),
+
+                      // Array list of items
+                      items: roadUnit.map((String items) {
+                        return DropdownMenuItem(
+                          value: items,
+                          child: Text(items),
+                        );
+                      }).toList(),
+                      // After selecting the desired option,it will
+                      // change button value to selected value
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedRoadUnit = newValue!;
+                        });
+                      },
                     ),
-                  ),
-                  Row(
-                    children: [
-                      DropdownButton(
-                        // Initial Value
-                        value: selectedRoadUnit,
-
-                        // Down Arrow Icon
-                        icon: const Icon(Icons.keyboard_arrow_down),
-
-                        // Array list of items
-                        items: roadUnit.map((String items) {
-                          return DropdownMenuItem(
-                            value: items,
-                            child: Text(items),
-                          );
-                        }).toList(),
-                        // After selecting the desired option,it will
-                        // change button value to selected value
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            selectedRoadUnit = newValue!;
-                          });
-                        },
-                      ),
-                      SizedBox(
-                        width: 60,
-                      ),
-                      DropdownButton(
-                        // Initial Value
-                        value: selectedRoadType,
-
-                        // Down Arrow Icon
-                        icon: const Icon(Icons.keyboard_arrow_down),
-
-                        // Array list of items
-                        items: roadType.map((String items) {
-                          return DropdownMenuItem(
-                            value: items,
-                            child: Text(items),
-                          );
-                        }).toList(),
-                        // After selecting the desired option,it will
-                        // change button value to selected value
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            selectedRoadType = newValue!;
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-                  TextField(
-                    controller: roadDist,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Distance from Main Road',
+                    SizedBox(
+                      width: 60,
                     ),
-                  ),
-                  DropdownButton(
-                    // Initial Value
-                    value: selectedRoadDistUnit,
+                    DropdownButton(
+                      // Initial Value
+                      value: selectedRoadType,
 
-                    // Down Arrow Icon
-                    icon: const Icon(Icons.keyboard_arrow_down),
+                      // Down Arrow Icon
+                      icon: const Icon(Icons.keyboard_arrow_down),
 
-                    // Array list of items
-                    items: roadDistUnit.map((String items) {
-                      return DropdownMenuItem(
-                        value: items,
-                        child: Text(items),
-                      );
-                    }).toList(),
-                    // After selecting the desired option,it will
-                    // change button value to selected value
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        selectedRoadDistUnit = newValue!;
-                      });
-                    },
-                  ),
-                  TextField(
-                    controller: builtYear,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Enter Built Year (e.g 2020 AD)',
+                      // Array list of items
+                      items: roadType.map((String items) {
+                        return DropdownMenuItem(
+                          value: items,
+                          child: Text(items),
+                        );
+                      }).toList(),
+                      // After selecting the desired option,it will
+                      // change button value to selected value
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedRoadType = newValue!;
+                        });
+                      },
                     ),
+                  ],
+                ),
+                TextField(
+                  controller: roadDist,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Distance from Main Road',
                   ),
-                  SizedBox(
-                    height: 10,
+                ),
+                DropdownButton(
+                  // Initial Value
+                  value: selectedRoadDistUnit,
+
+                  // Down Arrow Icon
+                  icon: const Icon(Icons.keyboard_arrow_down),
+
+                  // Array list of items
+                  items: roadDistUnit.map((String items) {
+                    return DropdownMenuItem(
+                      value: items,
+                      child: Text(items),
+                    );
+                  }).toList(),
+                  // After selecting the desired option,it will
+                  // change button value to selected value
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      selectedRoadDistUnit = newValue!;
+                    });
+                  },
+                ),
+                TextField(
+                  controller: builtYear,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Enter Built Year (e.g 2020 AD)',
                   ),
-                  TextField(
-                    controller: totalfloor,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Total Floor',
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                TextField(
+                  controller: totalfloor,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Total Floor',
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                DropdownButton(
+                  // Initial Value
+                  value: selectedFurnishing,
+
+                  // Down Arrow Icon
+                  icon: const Icon(Icons.keyboard_arrow_down),
+
+                  // Array list of items
+                  items: furnishing.map((String items) {
+                    return DropdownMenuItem(
+                      value: items,
+                      child: Text(items),
+                    );
+                  }).toList(),
+                  // After selecting the desired option,it will
+                  // change button value to selected value
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      selectedFurnishing = newValue!;
+                    });
+                  },
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                TextField(
+                  controller: totalArea,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Total Area',
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                DropdownButton(
+                  // Initial Value
+                  value: selectedAreaUnit,
+                  // Down Arrow Icon
+                  icon: const Icon(Icons.keyboard_arrow_down),
+
+                  // Array list of items
+                  items: areaUnit.map((String items) {
+                    return DropdownMenuItem(
+                      value: items,
+                      child: Text(items),
+                    );
+                  }).toList(),
+                  // After selecting the desired option,it will
+                  // change button value to selected value
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      selectedAreaUnit = newValue!;
+                    });
+                  },
+                ),
+                TextField(
+                  controller: builtArea,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Built Area',
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                DropdownButton(
+                  // Initial Value
+                  value: selectedBuiltArea,
+
+                  // Down Arrow Icon
+                  icon: const Icon(Icons.keyboard_arrow_down),
+
+                  // Array list of items
+                  items: areaUnit.map((String items) {
+                    return DropdownMenuItem(
+                      value: items,
+                      child: Text(items),
+                    );
+                  }).toList(),
+                  // After selecting the desired option,it will
+                  // change button value to selected value
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      selectedBuiltArea = newValue!;
+                    });
+                  },
+                ),
+                Row(
+                  children: [
+                    Text("Property Face:"),
+                    SizedBox(
+                      width: 30,
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  DropdownButton(
-                    // Initial Value
-                    value: selectedFurnishing,
+                    DropdownButton(
+                      // Initial Value
+                      value: selectedPropertyFace,
 
-                    // Down Arrow Icon
-                    icon: const Icon(Icons.keyboard_arrow_down),
+                      // Down Arrow Icon
+                      icon: const Icon(Icons.keyboard_arrow_down),
 
-                    // Array list of items
-                    items: furnishing.map((String items) {
-                      return DropdownMenuItem(
-                        value: items,
-                        child: Text(items),
-                      );
-                    }).toList(),
-                    // After selecting the desired option,it will
-                    // change button value to selected value
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        selectedFurnishing = newValue!;
-                      });
-                    },
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  TextField(
-                    controller: totalArea,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Total Area',
+                      // Array list of items
+                      items: propertyFace.map((String items) {
+                        return DropdownMenuItem(
+                          value: items,
+                          child: Text(items),
+                        );
+                      }).toList(),
+                      // After selecting the desired option,it will
+                      // change button value to selected value
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedPropertyFace = newValue!;
+                        });
+                      },
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  DropdownButton(
-                    // Initial Value
-                    value: selectedAreaUnit,
-                    // Down Arrow Icon
-                    icon: const Icon(Icons.keyboard_arrow_down),
-
-                    // Array list of items
-                    items: areaUnit.map((String items) {
-                      return DropdownMenuItem(
-                        value: items,
-                        child: Text(items),
-                      );
-                    }).toList(),
-                    // After selecting the desired option,it will
-                    // change button value to selected value
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        selectedAreaUnit = newValue!;
-                      });
-                    },
-                  ),
-                  TextField(
-                    controller: builtArea,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Built Area',
+                  ],
+                ),
+                SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text("Bedroom"),
+                    SizedBox(
+                      width: 10,
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  DropdownButton(
-                    // Initial Value
-                    value: selectedBuiltArea,
+                    DropdownButton(
+                      // Initial Value
+                      value: selectedBedroom,
 
-                    // Down Arrow Icon
-                    icon: const Icon(Icons.keyboard_arrow_down),
+                      // Down Arrow Icon
+                      icon: const Icon(Icons.keyboard_arrow_down),
 
-                    // Array list of items
-                    items: areaUnit.map((String items) {
-                      return DropdownMenuItem(
-                        value: items,
-                        child: Text(items),
-                      );
-                    }).toList(),
-                    // After selecting the desired option,it will
-                    // change button value to selected value
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        selectedBuiltArea = newValue!;
-                      });
-                    },
-                  ),
-                  Row(
-                    children: [
-                      Text("Property Face:"),
-                      SizedBox(
-                        width: 30,
-                      ),
-                      DropdownButton(
-                        // Initial Value
-                        value: selectedPropertyFace,
-
-                        // Down Arrow Icon
-                        icon: const Icon(Icons.keyboard_arrow_down),
-
-                        // Array list of items
-                        items: propertyFace.map((String items) {
-                          return DropdownMenuItem(
-                            value: items,
-                            child: Text(items),
-                          );
-                        }).toList(),
-                        // After selecting the desired option,it will
-                        // change button value to selected value
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            selectedPropertyFace = newValue!;
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text("Bedroom"),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      DropdownButton(
-                        // Initial Value
-                        value: selectedBedroom,
-
-                        // Down Arrow Icon
-                        icon: const Icon(Icons.keyboard_arrow_down),
-
-                        // Array list of items
-                        items: Rooms.map((String items) {
-                          return DropdownMenuItem(
-                            value: items,
-                            child: Text(items),
-                          );
-                        }).toList(),
-                        // After selecting the desired option,it will
-                        // change button value to selected value
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            selectedBedroom = newValue!;
-                          });
-                        },
-                      ),
-                      SizedBox(
-                        width: 30,
-                      ),
-                      Text("Kitchen"),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      DropdownButton(
-                        // Initial Value
-                        value: selectedKitchen,
-
-                        // Down Arrow Icon
-                        icon: const Icon(Icons.keyboard_arrow_down),
-
-                        // Array list of items
-                        items: Rooms.map((String items) {
-                          return DropdownMenuItem(
-                            value: items,
-                            child: Text(items),
-                          );
-                        }).toList(),
-                        // After selecting the desired option,it will
-                        // change button value to selected value
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            selectedKitchen = newValue!;
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text("Living Room"),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      DropdownButton(
-                        // Initial Value
-                        value: selectedLivingroom,
-
-                        // Down Arrow Icon
-                        icon: const Icon(Icons.keyboard_arrow_down),
-
-                        // Array list of items
-                        items: Rooms.map((String items) {
-                          return DropdownMenuItem(
-                            value: items,
-                            child: Text(items),
-                          );
-                        }).toList(),
-                        // After selecting the desired option,it will
-                        // change button value to selected value
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            selectedLivingroom = newValue!;
-                          });
-                        },
-                      ),
-                      SizedBox(
-                        width: 30,
-                      ),
-                      Text("Bathroom"),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      DropdownButton(
-                        // Initial Value
-                        value: selectedBathroom,
-
-                        // Down Arrow Icon
-                        icon: const Icon(Icons.keyboard_arrow_down),
-
-                        // Array list of items
-                        items: Rooms.map((String items) {
-                          return DropdownMenuItem(
-                            value: items,
-                            child: Text(items),
-                          );
-                        }).toList(),
-                        // After selecting the desired option,it will
-                        // change button value to selected value
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            selectedBathroom = newValue!;
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    children: [
-                      Text("Parking"),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      DropdownButton(
-                        // Initial Value
-                        value: selectedParking,
-
-                        // Down Arrow Icon
-                        icon: const Icon(Icons.keyboard_arrow_down),
-
-                        // Array list of items
-                        items: Rooms.map((String items) {
-                          return DropdownMenuItem(
-                            value: items,
-                            child: Text(items),
-                          );
-                        }).toList(),
-                        // After selecting the desired option,it will
-                        // change button value to selected value
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            selectedParking = newValue!;
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text("Amenitities:"),
-                  Row(
-                    children: [
-                      customSwitch("Air Conditioner", air_conditioner,
-                          onChangeFunction1),
-                      customSwitch("Security", Security, onChangeFunction2),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      customSwitch("Parking", Parking, onChangeFunction3),
-                      customSwitch("Wi-Fi", WiFi, onChangeFunction4),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      customSwitch("Balcony", Balcony, onChangeFunction5),
-                      customSwitch(
-                          "Water Supply", Water_supply, onChangeFunction6),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      customSwitch("Gym", Gym, onChangeFunction7),
-                      customSwitch(
-                          "Swimming Pool", Swimming_pool, onChangeFunction8),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      customSwitch("TV Cable", Tv_Cable, onChangeFunction9),
-                      customSwitch("Laundry", Laundry, onChangeFunction10),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      customSwitch("Lift", Lift, onChangeFunction11),
-                      customSwitch(
-                          "Fire Place", Fire_Place, onChangeFunction12),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      customSwitch("Garden", Garden, onChangeFunction13),
-                      customSwitch("Solar", Solar, onChangeFunction14),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      customSwitch("Modular Kitchen", Modular_kitchen,
-                          onChangeFunction15),
-                      customSwitch("Drainage", Drainage, onChangeFunction16),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      customSwitch("Public Transport", Public_Transport,
-                          onChangeFunction17),
-                      customSwitch(
-                          "General Store", General_Store, onChangeFunction18),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text("Description:"),
-                    ],
-                  ),
-                  TextFormField(
-                    minLines: 2,
-                    maxLines: 5,
-                    keyboardType: TextInputType.multiline,
-                    decoration: InputDecoration(
-                        hintText: 'Write your Description here....'),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  TextField(
-                    controller: price,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Price ',
+                      // Array list of items
+                      items: Rooms.map((String items) {
+                        return DropdownMenuItem(
+                          value: items,
+                          child: Text(items),
+                        );
+                      }).toList(),
+                      // After selecting the desired option,it will
+                      // change button value to selected value
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedBedroom = newValue!;
+                        });
+                      },
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    children: [
-                      Text("Price Label:"),
-                      Spacer(),
-                      DropdownButton(
-                        // Initial Value
-                        value: selectedPriceLabel,
-
-                        // Down Arrow Icon
-                        icon: const Icon(Icons.keyboard_arrow_down),
-
-                        // Array list of items
-                        items: priceLabel.map((String items) {
-                          return DropdownMenuItem(
-                            value: items,
-                            child: Text(items),
-                          );
-                        }).toList(),
-                        // After selecting the desired option,it will
-                        // change button value to selected value
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            selectedPriceLabel = newValue!;
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-                  customSwitch("Negotiable", negotiable, onChangeFunction19),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  TextField(
-                    controller: ownerName,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Owner Name ',
+                    SizedBox(
+                      width: 30,
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  TextField(
-                    controller: ownerPhone,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Owner Phone ',
+                    Text("Kitchen"),
+                    SizedBox(
+                      width: 10,
                     ),
+                    DropdownButton(
+                      // Initial Value
+                      value: selectedKitchen,
+
+                      // Down Arrow Icon
+                      icon: const Icon(Icons.keyboard_arrow_down),
+
+                      // Array list of items
+                      items: Rooms.map((String items) {
+                        return DropdownMenuItem(
+                          value: items,
+                          child: Text(items),
+                        );
+                      }).toList(),
+                      // After selecting the desired option,it will
+                      // change button value to selected value
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedKitchen = newValue!;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+                SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text("Living Room"),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    DropdownButton(
+                      // Initial Value
+                      value: selectedLivingroom,
+
+                      // Down Arrow Icon
+                      icon: const Icon(Icons.keyboard_arrow_down),
+
+                      // Array list of items
+                      items: Rooms.map((String items) {
+                        return DropdownMenuItem(
+                          value: items,
+                          child: Text(items),
+                        );
+                      }).toList(),
+                      // After selecting the desired option,it will
+                      // change button value to selected value
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedLivingroom = newValue!;
+                        });
+                      },
+                    ),
+                    SizedBox(
+                      width: 30,
+                    ),
+                    Text("Bathroom"),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    DropdownButton(
+                      // Initial Value
+                      value: selectedBathroom,
+
+                      // Down Arrow Icon
+                      icon: const Icon(Icons.keyboard_arrow_down),
+
+                      // Array list of items
+                      items: Rooms.map((String items) {
+                        return DropdownMenuItem(
+                          value: items,
+                          child: Text(items),
+                        );
+                      }).toList(),
+                      // After selecting the desired option,it will
+                      // change button value to selected value
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedBathroom = newValue!;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: [
+                    Text("Parking"),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    DropdownButton(
+                      // Initial Value
+                      value: selectedParking,
+
+                      // Down Arrow Icon
+                      icon: const Icon(Icons.keyboard_arrow_down),
+
+                      // Array list of items
+                      items: Rooms.map((String items) {
+                        return DropdownMenuItem(
+                          value: items,
+                          child: Text(items),
+                        );
+                      }).toList(),
+                      // After selecting the desired option,it will
+                      // change button value to selected value
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedParking = newValue!;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text("Amenitities:"),
+                Row(
+                  children: [
+                    customSwitch(
+                        "Air Conditioner", air_conditioner, onChangeFunction1),
+                    customSwitch("Security", Security, onChangeFunction2),
+                  ],
+                ),
+                Row(
+                  children: [
+                    customSwitch("Parking", Parking, onChangeFunction3),
+                    customSwitch("Wi-Fi", WiFi, onChangeFunction4),
+                  ],
+                ),
+                Row(
+                  children: [
+                    customSwitch("Balcony", Balcony, onChangeFunction5),
+                    customSwitch(
+                        "Water Supply", Water_supply, onChangeFunction6),
+                  ],
+                ),
+                Row(
+                  children: [
+                    customSwitch("Gym", Gym, onChangeFunction7),
+                    customSwitch(
+                        "Swimming Pool", Swimming_pool, onChangeFunction8),
+                  ],
+                ),
+                Row(
+                  children: [
+                    customSwitch("TV Cable", Tv_Cable, onChangeFunction9),
+                    customSwitch("Laundry", Laundry, onChangeFunction10),
+                  ],
+                ),
+                Row(
+                  children: [
+                    customSwitch("Lift", Lift, onChangeFunction11),
+                    customSwitch("Fire Place", Fire_Place, onChangeFunction12),
+                  ],
+                ),
+                Row(
+                  children: [
+                    customSwitch("Garden", Garden, onChangeFunction13),
+                    customSwitch("Solar", Solar, onChangeFunction14),
+                  ],
+                ),
+                Row(
+                  children: [
+                    customSwitch(
+                        "Modular Kitchen", Modular_kitchen, onChangeFunction15),
+                    customSwitch("Drainage", Drainage, onChangeFunction16),
+                  ],
+                ),
+                Row(
+                  children: [
+                    customSwitch("Public Transport", Public_Transport,
+                        onChangeFunction17),
+                    customSwitch(
+                        "General Store", General_Store, onChangeFunction18),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text("Description:"),
+                  ],
+                ),
+                TextFormField(
+                  controller: description,
+                  minLines: 2,
+                  maxLines: 5,
+                  keyboardType: TextInputType.multiline,
+                  decoration: InputDecoration(
+                      hintText: 'Write your Description here....'),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                TextField(
+                  controller: price,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Price ',
                   ),
-                ],
-              ),
-            )),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: [
+                    Text("Price Label:"),
+                    Spacer(),
+                    DropdownButton(
+                      // Initial Value
+                      value: selectedPriceLabel,
+
+                      // Down Arrow Icon
+                      icon: const Icon(Icons.keyboard_arrow_down),
+
+                      // Array list of items
+                      items: priceLabel.map((String items) {
+                        return DropdownMenuItem(
+                          value: items,
+                          child: Text(items),
+                        );
+                      }).toList(),
+                      // After selecting the desired option,it will
+                      // change button value to selected value
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedPriceLabel = newValue!;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+                customSwitch("Negotiable", negotiable, onChangeFunction19),
+                SizedBox(
+                  height: 10,
+                ),
+                TextField(
+                  controller: ownerName,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Owner Name ',
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                TextField(
+                  controller: ownerPhone,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Owner Phone ',
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                TextField(
+                  controller: imgURL,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Image link ',
+                  ),
+                ),
+                // ElevatedButton(
+                //     onPressed: () {
+                //       Get.toNamed('/uploadimage');
+                //     },
+                //     child: Text('Upload image')),
+              ],
+            ),
+          ),
+        ),
         Step(
           state: StepState.complete,
           isActive: _activeStepIndex >= 2,
@@ -922,6 +940,22 @@ class _PostPropertyState extends State<PostProperty> {
                 Text('Road Type : ${selectedRoadType}'),
                 Text(
                     'Distance from Main Road: ${roadDist.text} ${selectedRoadDistUnit}'),
+                Text('Built Year : ${builtYear.text}'),
+                Text('Total Floor : ${totalfloor.text}'),
+                Text('Furnishing : ${selectedFurnishing}'),
+                Text('Total Area : ${totalArea.text} ${selectedAreaUnit}'),
+                Text('Built Up Area :${builtArea.text} ${selectedBuiltArea}'),
+                Text('Property Face : ${selectedPropertyFace}'),
+                Text('Bedroom : ${selectedBedroom}'),
+                Text('Kitchen : ${selectedKitchen}'),
+                Text('Living Room : ${selectedLivingroom}'),
+                Text('Bathroom : ${selectedBathroom}'),
+                Text('Parking : ${selectedParking}'),
+                Text("Description: ${description.text}"),
+                Text('Price : Rs. ${price.text} ${selectedPriceLabel}'),
+                Text('Negotiable : ${negotiable}'),
+                Text('Owner Name : ${ownerName.text}'),
+                Text('Owner Phone : ${ownerPhone.text}'),
               ],
             ),
           ),

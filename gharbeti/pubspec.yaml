@@ -45,6 +45,8 @@ dependencies:
   editable: ^2.0.0
   table_sticky_headers: ^2.0.1
   data_table_2: ^2.3.6
+  modal_progress_hud_nsn: ^0.1.0-nullsafety-1
+  image_picker: ^0.8.4+4
 dev_dependencies:
   flutter_test:
     sdk: flutter

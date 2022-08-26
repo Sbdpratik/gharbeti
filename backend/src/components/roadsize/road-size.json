@@ -2,7 +2,8 @@
   "collectionName": "components_roadsize_road_sizes",
   "info": {
     "displayName": "Road Size",
-    "icon": "motorcycle"
+    "icon": "motorcycle",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -30,7 +31,8 @@
       "default": "Graveled"
     },
     "distance_form_main_road": {
-      "type": "decimal"
+      "type": "decimal",
+      "default": 0
     },
     "distance_unit": {
       "type": "enumeration",
