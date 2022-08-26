@@ -10,7 +10,7 @@ class WelcomeText extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Hello $username',
+            'Hello',
             style: Theme.of(context)
                 .textTheme
                 .bodyText1!
