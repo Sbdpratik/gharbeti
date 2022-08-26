@@ -31,80 +31,76 @@ class _PropertyVerticalListState extends State<PropertyVerticalList> {
       child: Obx(
         () => propertyController.isDataLoading.value == true
             ? Center(child: CircularProgressIndicator.adaptive())
-            : SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Container(
-                  height: 250,
-                  child: ListView.builder(
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    itemBuilder: (context, i) {
-                      String? propertyCategories;
-                      String? propertyTitle;
-                      String? address;
-                      String? status;
-                      String? imgURL;
-                      String? roadSize;
-                      String? id;
+            : Container(
+                child: ListView.separated(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  itemBuilder: (context, i) {
+                    String? propertyCategories;
+                    String? propertyTitle;
+                    String? address;
+                    String? status;
+                    String? imgURL;
+                    String? roadSize;
+                    String? id;
 
-                      try {
-                        id = propertyController.propertyList!.data![i].id
-                            .toString();
-                        propertyTitle = propertyController
-                            .propertyList!.data![i].attributes!.propertyTitle!;
-                        propertyCategories = propertyController.propertyList!
-                            .data![i].attributes!.propertyCategories!;
-                        address = propertyController
-                            .propertyList!.data![i].attributes!.address!;
-                        status = propertyController
-                            .propertyList!.data![i].attributes!.status!;
-                        imgURL = propertyController
-                            .propertyList!.data![i].attributes!.imageUrl!;
-                        // roadSize =
-                        //     '${propertyController.propertyList!.data![i].attributes!.roadSize!.roadSize} +${propertyController.propertyList!.data![i].attributes!.roadSize!.unit}';
-                      } catch (e) {
-                        propertyTitle = '';
-                        propertyCategories = '';
-                        address = '';
-                        status = '';
-                        imgURL = '';
-                        roadSize = '';
-                      }
-                      return GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      PropertyDetail(id: id!)));
-                        },
-                        child: Container(
-                          margin: EdgeInsets.only(bottom: 10),
-                          padding: EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(8)),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          PropertyDetail(id: id!)));
-                            },
-                            child: Stack(
-                              children: [
-                                Row(
+                    try {
+                      id = propertyController.propertyList!.data![i].id
+                          .toString();
+                      propertyTitle = propertyController
+                          .propertyList!.data![i].attributes!.propertyTitle!;
+                      propertyCategories = propertyController.propertyList!
+                          .data![i].attributes!.propertyCategories!;
+                      address = propertyController
+                          .propertyList!.data![i].attributes!.address!;
+                      status = propertyController
+                          .propertyList!.data![i].attributes!.status!;
+                      imgURL = propertyController
+                          .propertyList!.data![i].attributes!.imageUrl!;
+                      // roadSize =
+                      //     '${propertyController.propertyList!.data![i].attributes!.roadSize!.roadSize} +${propertyController.propertyList!.data![i].attributes!.roadSize!.unit}';
+                    } catch (e) {
+                      propertyTitle = '';
+                      propertyCategories = '';
+                      address = '';
+                      status = '';
+                      imgURL = '';
+                      roadSize = '';
+                    }
+                    return GestureDetector(
+                      onTap: () {
+                        Get.toNamed('/propertydetails/${id}');
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(bottom: 10),
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8)),
+                        child: GestureDetector(
+                          onTap: () {
+                            print('${propertyTitle} is Clicked');
+                          },
+                          child: Stack(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  print('${propertyTitle} is Clicked');
+                                },
+                                child: Row(
                                   children: [
-                                    Container(
-                                      width: 150,
-                                      height: 80,
-                                      decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                              image: NetworkImage(imgURL),
-                                              fit: BoxFit.cover),
-                                          borderRadius:
-                                              BorderRadius.circular(8)),
+                                    GestureDetector(
+                                      onTap: () {},
+                                      child: Container(
+                                        width: 150,
+                                        height: 80,
+                                        decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                                image: NetworkImage(imgURL),
+                                                fit: BoxFit.cover),
+                                            borderRadius:
+                                                BorderRadius.circular(8)),
+                                      ),
                                     ),
                                     SizedBox(width: 10),
                                     Column(
@@ -132,21 +128,22 @@ class _PropertyVerticalListState extends State<PropertyVerticalList> {
                                     ),
                                   ],
                                 ),
-                                Positioned(
-                                  right: 0,
-                                  child: CircleIconButton(
-                                    iconUrl: 'assets/icons/heart.svg',
-                                    color: Colors.grey,
-                                  ),
-                                )
-                              ],
-                            ),
+                              ),
+                              Positioned(
+                                right: 0,
+                                child: CircleIconButton(
+                                  iconUrl: 'assets/icons/heart.svg',
+                                  color: Colors.grey,
+                                ),
+                              )
+                            ],
                           ),
                         ),
-                      );
-                    },
-                    itemCount: propertyController.propertyList!.data!.length,
-                  ),
+                      ),
+                    );
+                  },
+                  separatorBuilder: (_, index) => SizedBox(width: 10),
+                  itemCount: propertyController.propertyList!.data!.length,
                 ),
               ),
       ),
