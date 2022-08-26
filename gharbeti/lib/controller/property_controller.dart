@@ -10,12 +10,12 @@ class PropertyController extends GetxController {
   getPropertyFromApi() async {
     try {
       isDataLoading(true);
-      http.Response response = await http
-          .get(Uri.parse("https://gharbeti8.herokuapp.com/api/properties"));
+      http.Response response = await http.get(Uri.parse(
+          "https://gharbeti8.herokuapp.com/api/properties?populate=*"));
       // print(response.statusCode);
       if (response.statusCode == 200) {
         var result = jsonDecode(response.body);
-
+        print(result);
         propertyList = Property.fromJson(result);
         // print(propertyList);
       } else {}

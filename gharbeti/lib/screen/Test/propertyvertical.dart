@@ -37,17 +37,33 @@ class _PropertyVerticalListState extends State<PropertyVerticalList> {
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
                   itemBuilder: (context, i) {
+                    String? id;
                     String? propertyCategories;
                     String? propertyTitle;
                     String? address;
                     String? status;
                     String? imgURL;
                     String? roadSize;
-                    String? id;
+                    String? price;
+                    String? price_label;
+                    String? description;
+                    String? area;
+                    String? ownername;
+                    String? ownerphone;
+                    String? unit;
 
                     try {
-                      id = propertyController.propertyList!.data![i].id
+                      unit = propertyController
+                          .propertyList!.data![i].attributes!.totalArea!.units;
+                      ownerphone = propertyController.propertyList!.data![i]
+                          .attributes!.ownerDetails!.ownerPhone;
+                      ownername = propertyController.propertyList!.data![i]
+                          .attributes!.ownerDetails!.ownerName;
+                      area = propertyController
+                          .propertyList!.data![i].attributes!.totalArea!.area
                           .toString();
+                      description = propertyController.propertyList!.data![i]
+                          .attributes!.description!.description;
                       propertyTitle = propertyController
                           .propertyList!.data![i].attributes!.propertyTitle!;
                       propertyCategories = propertyController.propertyList!
@@ -58,8 +74,13 @@ class _PropertyVerticalListState extends State<PropertyVerticalList> {
                           .propertyList!.data![i].attributes!.status!;
                       imgURL = propertyController
                           .propertyList!.data![i].attributes!.imageUrl!;
-                      // roadSize =
-                      //     '${propertyController.propertyList!.data![i].attributes!.roadSize!.roadSize} +${propertyController.propertyList!.data![i].attributes!.roadSize!.unit}';
+                      price = propertyController
+                          .propertyList!.data![i].attributes!.price!.price
+                          .toString();
+                      price_label = propertyController
+                          .propertyList!.data![i].attributes!.price!.priceLabel;
+                      roadSize =
+                          '${propertyController.propertyList!.data![i].attributes!.roadSize!.roadSize} ${propertyController.propertyList!.data![i].attributes!.roadSize!.unit}';
                     } catch (e) {
                       propertyTitle = '';
                       propertyCategories = '';
@@ -79,6 +100,12 @@ class _PropertyVerticalListState extends State<PropertyVerticalList> {
                                       propertyTitle: propertyTitle,
                                       address: address,
                                       status: status,
+                                      description: description,
+                                      price: price,
+                                      price_label: price_label,
+                                      area: area,
+                                      unit: unit,
+                                      roadSize: roadSize,
                                     )));
                       },
                       child: Container(
@@ -87,67 +114,58 @@ class _PropertyVerticalListState extends State<PropertyVerticalList> {
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(8)),
-                        child: GestureDetector(
-                          onTap: () {
-                            print('${propertyTitle} is Clicked');
-                          },
-                          child: Stack(
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  print('${propertyTitle} is Clicked');
-                                },
-                                child: Row(
+                        child: Stack(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                GestureDetector(
+                                  onTap: () {},
+                                  child: Container(
+                                    width: 150,
+                                    height: 80,
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            image: NetworkImage(imgURL),
+                                            fit: BoxFit.cover),
+                                        borderRadius: BorderRadius.circular(8)),
+                                  ),
+                                ),
+                                SizedBox(width: 10),
+                                Column(
                                   children: [
-                                    GestureDetector(
-                                      onTap: () {},
-                                      child: Container(
-                                        width: 150,
-                                        height: 80,
-                                        decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                                image: NetworkImage(imgURL),
-                                                fit: BoxFit.cover),
-                                            borderRadius:
-                                                BorderRadius.circular(8)),
-                                      ),
+                                    Text(
+                                      propertyTitle,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headline1!
+                                          .copyWith(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold),
                                     ),
-                                    SizedBox(width: 10),
-                                    Column(
-                                      children: [
-                                        Text(
-                                          propertyTitle,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .headline1!
-                                              .copyWith(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.bold),
-                                        ),
-                                        SizedBox(height: 10),
-                                        Text(
-                                          address,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyText1!
-                                              .copyWith(fontSize: 12),
-                                        ),
-                                        SizedBox(height: 10),
-                                        Text(status),
-                                      ],
+                                    SizedBox(height: 10),
+                                    Text(
+                                      address,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyText1!
+                                          .copyWith(fontSize: 12),
                                     ),
+                                    SizedBox(height: 10),
+                                    Text(status),
+                                    Text('Rs ${price} ${price_label} '),
                                   ],
                                 ),
-                              ),
-                              // Positioned(
-                              //   right: 0,
-                              //   child: CircleIconButton(
-                              //     iconUrl: 'assets/icons/heart.svg',
-                              //     color: Colors.grey,
-                              //   ),
-                              // )
-                            ],
-                          ),
+                              ],
+                            ),
+                            // Positioned(
+                            //   right: 0,
+                            //   child: CircleIconButton(
+                            //     iconUrl: 'assets/icons/heart.svg',
+                            //     color: Colors.grey,
+                            //   ),
+                            // )
+                          ],
                         ),
                       ),
                     );

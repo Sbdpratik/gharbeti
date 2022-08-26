@@ -9,13 +9,29 @@ class PropertyDetail extends StatelessWidget {
   final String? propertyTitle;
   final String? status;
   final String? address;
+  final String? roadSize;
+  final String? price;
+  final String? price_label;
+  final String? description;
+  final String? area;
+  final String? ownername;
+  final String? ownerphone;
+  final String? unit;
   const PropertyDetail(
       {Key? key,
       this.id,
       this.imgURL,
       this.propertyTitle,
       this.address,
-      this.status})
+      this.status,
+      this.roadSize,
+      this.price,
+      this.price_label,
+      this.description,
+      this.area,
+      this.unit,
+      this.ownername,
+      this.ownerphone})
       : super(key: key);
 
   @override
@@ -93,7 +109,7 @@ class PropertyDetail extends StatelessWidget {
                   ),
                   SizedBox(height: 10),
                   Text(
-                    '5000 sqft',
+                    '${area} ${unit}',
                     style: Theme.of(context)
                         .textTheme
                         .bodyText1!
@@ -105,14 +121,14 @@ class PropertyDetail extends StatelessWidget {
                   RichText(
                     text: TextSpan(children: [
                       TextSpan(
-                          text: '\$4455 ',
+                          text: 'Rs ${price}',
                           style: Theme.of(context)
                               .textTheme
                               .headline1!
                               .copyWith(
                                   fontSize: 16, fontWeight: FontWeight.bold)),
                       TextSpan(
-                        text: 'Per Month',
+                        text: price_label,
                         style: Theme.of(context)
                             .textTheme
                             .bodyText1!
@@ -169,7 +185,7 @@ class PropertyDetail extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    'Enum veniam dolor sint ipsum culpa magna dolor incididunt laborum excepteu...',
+                    description!,
                     style: Theme.of(context)
                         .textTheme
                         .bodyText1!
