@@ -16,6 +16,7 @@ import 'package:gharbeti/screen/profile/editprofilepage.dart';
 import 'package:gharbeti/screen/profile/profile.dart';
 import 'package:gharbeti/screen/profile/setting.dart';
 import 'package:gharbeti/screen/rental_report/rentalreport.dart';
+import 'package:gharbeti/screen/search/search.dart';
 
 void main() {
   runApp(MyApp());
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/propertylist", page: () => PropertyList()),
         GetPage(name: "/uploadimage", page: () => UploadImageScreen()),
         GetPage(name: "/propertydetail", page: () => PropertyDetail()),
+        GetPage(name: "/search", page: () => ListSearch()),
       ],
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,

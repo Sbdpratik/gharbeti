@@ -15,7 +15,7 @@ class PropertyController extends GetxController {
       // print(response.statusCode);
       if (response.statusCode == 200) {
         var result = jsonDecode(response.body);
-        print(result);
+        // print(result);
         propertyList = Property.fromJson(result);
         // print(propertyList);
       } else {}
