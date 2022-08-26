@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             WelcomeText(),
-            SearchInput(),
+            // SearchInput(),
             // Categories(),
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),

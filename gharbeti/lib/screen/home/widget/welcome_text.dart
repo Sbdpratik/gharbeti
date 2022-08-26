@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class WelcomeText extends StatelessWidget {
   var username = 'Bikash';
@@ -14,15 +16,25 @@ class WelcomeText extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .bodyText1!
-                .copyWith(fontSize: 16, fontWeight: FontWeight.bold),
+                .copyWith(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           SizedBox(height: 10),
-          Text(
-            'Find your sweet Home',
-            style: Theme.of(context)
-                .textTheme
-                .headline1!
-                .copyWith(fontSize: 20, fontWeight: FontWeight.bold),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Find your sweet Home',
+                style: Theme.of(context)
+                    .textTheme
+                    .headline1!
+                    .copyWith(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              GestureDetector(
+                  onTap: () {
+                    Get.toNamed('/search');
+                  },
+                  child: SvgPicture.asset('assets/icons/search.svg')),
+            ],
           )
         ],
       ),

@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/propertylist", page: () => PropertyList()),
         GetPage(name: "/uploadimage", page: () => UploadImageScreen()),
         GetPage(name: "/propertydetail", page: () => PropertyDetail()),
-        GetPage(name: "/search", page: () => ListSearch()),
+        GetPage(name: "/search", page: () => SearchList()),
       ],
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,

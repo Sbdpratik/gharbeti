@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:gharbeti/screen/post_property/loader.dart';
 
 class PostProperty extends StatefulWidget {
   const PostProperty({Key? key}) : super(key: key);
@@ -978,6 +979,7 @@ class _PostPropertyState extends State<PostProperty> {
               _activeStepIndex += 1;
             });
           } else {
+            Get.to(Loader());
             print('Submited');
           }
         },
