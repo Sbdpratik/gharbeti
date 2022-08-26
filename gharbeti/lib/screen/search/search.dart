@@ -118,40 +118,40 @@ class _SearchListState extends State<SearchList> {
                               imgURL = '';
                               roadSize = '';
                             }
-                            return GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => PropertyDetail(
-                                              id: id,
-                                              imgURL: imgURL,
-                                              propertyTitle: propertyTitle,
-                                              address: address,
-                                              status: status,
-                                              description: description,
-                                              price: price,
-                                              price_label: price_label,
-                                              area: area,
-                                              unit: unit,
-                                              roadSize: roadSize,
-                                            )));
-                              },
-                              child: Container(
-                                margin: EdgeInsets.only(bottom: 10),
-                                padding: EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: Stack(
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        GestureDetector(
-                                          onTap: () {},
-                                          child: Container(
+
+                            if (searchController.text.isEmpty) {
+                              return GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => PropertyDetail(
+                                                id: id,
+                                                imgURL: imgURL,
+                                                propertyTitle: propertyTitle,
+                                                address: address,
+                                                status: status,
+                                                description: description,
+                                                price: price,
+                                                price_label: price_label,
+                                                area: area,
+                                                unit: unit,
+                                                roadSize: roadSize,
+                                              )));
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(bottom: 10),
+                                  padding: EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(8)),
+                                  child: Stack(
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Container(
                                             width: 150,
                                             height: 80,
                                             decoration: BoxDecoration(
@@ -161,46 +161,136 @@ class _SearchListState extends State<SearchList> {
                                                 borderRadius:
                                                     BorderRadius.circular(8)),
                                           ),
-                                        ),
-                                        SizedBox(width: 10),
-                                        Column(
-                                          children: [
-                                            Text(
-                                              propertyTitle,
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .headline1!
-                                                  .copyWith(
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                            ),
-                                            SizedBox(height: 10),
-                                            Text(
-                                              address,
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyText1!
-                                                  .copyWith(fontSize: 12),
-                                            ),
-                                            SizedBox(height: 10),
-                                            Text(status),
-                                            Text('Rs ${price} ${price_label} '),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    // Positioned(
-                                    //   right: 0,
-                                    //   child: CircleIconButton(
-                                    //     iconUrl: 'assets/icons/heart.svg',
-                                    //     color: Colors.grey,
-                                    //   ),
-                                    // )
-                                  ],
+                                          SizedBox(width: 10),
+                                          Column(
+                                            children: [
+                                              Text(
+                                                propertyTitle,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .headline1!
+                                                    .copyWith(
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                              ),
+                                              SizedBox(height: 10),
+                                              Text(
+                                                address,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyText1!
+                                                    .copyWith(fontSize: 12),
+                                              ),
+                                              SizedBox(height: 10),
+                                              Text(status),
+                                              Text(
+                                                  'Rs ${price} ${price_label} '),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      // Positioned(
+                                      //   right: 0,
+                                      //   child: CircleIconButton(
+                                      //     iconUrl: 'assets/icons/heart.svg',
+                                      //     color: Colors.grey,
+                                      //   ),
+                                      // )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            );
+                              );
+                            } else if (address.toLowerCase().contains(
+                                    searchController.text.toLowerCase()) ||
+                                propertyCategories.toLowerCase().contains(
+                                    searchController.text.toLowerCase()) ||
+                                propertyTitle.toLowerCase().contains(
+                                    searchController.text.toLowerCase())) {
+                              return GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => PropertyDetail(
+                                                id: id,
+                                                imgURL: imgURL,
+                                                propertyTitle: propertyTitle,
+                                                address: address,
+                                                status: status,
+                                                description: description,
+                                                price: price,
+                                                price_label: price_label,
+                                                area: area,
+                                                unit: unit,
+                                                roadSize: roadSize,
+                                              )));
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(bottom: 10),
+                                  padding: EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(8)),
+                                  child: Stack(
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            width: 150,
+                                            height: 80,
+                                            decoration: BoxDecoration(
+                                                image: DecorationImage(
+                                                    image: NetworkImage(imgURL),
+                                                    fit: BoxFit.cover),
+                                                borderRadius:
+                                                    BorderRadius.circular(8)),
+                                          ),
+                                          SizedBox(width: 10),
+                                          Column(
+                                            children: [
+                                              Text(
+                                                propertyTitle,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .headline1!
+                                                    .copyWith(
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                              ),
+                                              SizedBox(height: 10),
+                                              Text(
+                                                address,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyText1!
+                                                    .copyWith(fontSize: 12),
+                                              ),
+                                              SizedBox(height: 10),
+                                              Text(status),
+                                              Text(
+                                                  'Rs ${price} ${price_label} '),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      // Positioned(
+                                      //   right: 0,
+                                      //   child: CircleIconButton(
+                                      //     iconUrl: 'assets/icons/heart.svg',
+                                      //     color: Colors.grey,
+                                      //   ),
+                                      // )
+                                    ],
+                                  ),
+                                ),
+                              );
+                            } else {
+                              return Container();
+                            }
                           },
                           separatorBuilder: (_, index) => SizedBox(width: 10),
                           itemCount:
