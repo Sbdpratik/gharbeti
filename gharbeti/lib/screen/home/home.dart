@@ -34,13 +34,13 @@ class HomePage extends StatelessWidget {
                         .headline1!
                         .copyWith(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
-                  Text(
-                    'See All',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyText1!
-                        .copyWith(fontSize: 14, fontWeight: FontWeight.bold),
-                  ),
+                  // Text(
+                  //   'See All',
+                  //   style: Theme.of(context)
+                  //       .textTheme
+                  //       .bodyText1!
+                  //       .copyWith(fontSize: 14, fontWeight: FontWeight.bold),
+                  // ),
                 ],
               ),
             ),
@@ -57,13 +57,13 @@ class HomePage extends StatelessWidget {
                         .headline1!
                         .copyWith(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
-                  Text(
-                    'See All',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyText1!
-                        .copyWith(fontSize: 14, fontWeight: FontWeight.bold),
-                  ),
+                  // Text(
+                  //   'See All',
+                  //   style: Theme.of(context)
+                  //       .textTheme
+                  //       .bodyText1!
+                  //       .copyWith(fontSize: 14, fontWeight: FontWeight.bold),
+                  // ),
                 ],
               ),
             ),

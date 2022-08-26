@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/rentalreport", page: () => RentalReport()),
         GetPage(name: "/propertylist", page: () => PropertyList()),
         GetPage(name: "/uploadimage", page: () => UploadImageScreen()),
-        GetPage(name: "/propertydetail", page: () => PropertyDetail()),
+        // GetPage(name: "/propertydetail/:id", page: () => PropertyDetail()),
       ],
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,

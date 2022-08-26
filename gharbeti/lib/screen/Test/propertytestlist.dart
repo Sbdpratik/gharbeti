@@ -6,6 +6,7 @@ import 'package:gharbeti/controller/property_controller.dart';
 import 'package:gharbeti/model/house.dart';
 import 'package:gharbeti/model/property.dart';
 import 'package:gharbeti/screen/detail/detail.dart';
+import 'package:gharbeti/screen/detail/property_detail.dart';
 import 'package:gharbeti/widget/circle_icon_button.dart';
 
 class PropertyList extends StatefulWidget {
@@ -42,8 +43,11 @@ class _PropertyListState extends State<PropertyList> {
                     String? status;
                     String? imgURL;
                     String? roadSize;
+                    String? id;
 
                     try {
+                      id = propertyController.propertyList!.data![i].id
+                          .toString();
                       propertyTitle = propertyController
                           .propertyList!.data![i].attributes!.propertyTitle!;
                       propertyCategories = propertyController.propertyList!
@@ -76,7 +80,11 @@ class _PropertyListState extends State<PropertyList> {
                             borderRadius: BorderRadius.circular(8)),
                         child: GestureDetector(
                           onTap: () {
-                            print('${propertyTitle} is Clicked');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        PropertyDetail(id: id!)));
                           },
                           child: Stack(
                             children: [
@@ -128,10 +136,10 @@ class _PropertyListState extends State<PropertyList> {
                                                       fontSize: 12,
                                                       fontWeight:
                                                           FontWeight.bold),
-                                            )
+                                            ),
+                                            Text(status),
                                           ],
                                         ),
-                                        Text(status),
                                       ],
                                     ),
                                   ))
