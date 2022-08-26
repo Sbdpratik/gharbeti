@@ -25,10 +25,6 @@ class CustomBottomNavigationBar extends StatelessWidget {
           'assets/icons/home.svg',
           color: Theme.of(context).primaryColor,
         ),
-        SvgPicture.asset(
-          'assets/icons/chat.svg',
-          color: Theme.of(context).primaryColor,
-        ),
         GestureDetector(
           onTap: () {
             Get.toNamed('/postproperty');
@@ -38,13 +34,14 @@ class CustomBottomNavigationBar extends StatelessWidget {
             color: Theme.of(context).primaryColor,
           ),
         ),
-        SvgPicture.asset(
-          'assets/icons/notification.svg',
-          color: Theme.of(context).primaryColor,
-        ),
-        SvgPicture.asset(
-          'assets/icons/home_mark.svg',
-          color: Theme.of(context).primaryColor,
+        GestureDetector(
+          onTap: () {
+            Get.toNamed('rentalreport');
+          },
+          child: SvgPicture.asset(
+            'assets/icons/report.svg',
+            color: Theme.of(context).primaryColor,
+          ),
         ),
       ]),
       //     bottomBarItem

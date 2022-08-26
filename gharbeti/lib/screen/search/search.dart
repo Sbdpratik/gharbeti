@@ -50,7 +50,7 @@ class _SearchListState extends State<SearchList> {
                         },
                       ),
                       Container(
-                        height: 500,
+                        height: 800,
                         child: ListView.separated(
                           scrollDirection: Axis.vertical,
                           shrinkWrap: true,
