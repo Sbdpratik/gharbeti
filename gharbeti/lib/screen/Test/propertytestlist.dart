@@ -86,13 +86,13 @@ class _PropertyListState extends State<PropertyList> {
                                         image: NetworkImage(imgURL),
                                         fit: BoxFit.cover)),
                               ),
-                              Positioned(
-                                right: 15,
-                                top: 15,
-                                child: CircleIconButton(
-                                    iconUrl: 'assets/icons/mark.svg',
-                                    color: Theme.of(context).accentColor),
-                              ),
+                              // Positioned(
+                              //   right: 15,
+                              //   top: 15,
+                              //   child: CircleIconButton(
+                              //       iconUrl: 'assets/icons/mark.svg',
+                              //       color: Theme.of(context).accentColor),
+                              // ),
                               Positioned(
                                   bottom: 0,
                                   left: 0,
@@ -128,10 +128,10 @@ class _PropertyListState extends State<PropertyList> {
                                                       fontSize: 12,
                                                       fontWeight:
                                                           FontWeight.bold),
-                                            )
+                                            ),
+                                            Text(status),
                                           ],
                                         ),
-                                        Text(status),
                                       ],
                                     ),
                                   ))

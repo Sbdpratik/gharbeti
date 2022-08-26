@@ -32,6 +32,7 @@ class _PropertyVerticalListState extends State<PropertyVerticalList> {
         () => propertyController.isDataLoading.value == true
             ? Center(child: CircularProgressIndicator.adaptive())
             : Container(
+                height: 350,
                 child: ListView.separated(
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
@@ -69,7 +70,16 @@ class _PropertyVerticalListState extends State<PropertyVerticalList> {
                     }
                     return GestureDetector(
                       onTap: () {
-                        Get.toNamed('/propertydetails/${id}');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PropertyDetail(
+                                      id: id,
+                                      imgURL: imgURL,
+                                      propertyTitle: propertyTitle,
+                                      address: address,
+                                      status: status,
+                                    )));
                       },
                       child: Container(
                         margin: EdgeInsets.only(bottom: 10),
@@ -129,13 +139,13 @@ class _PropertyVerticalListState extends State<PropertyVerticalList> {
                                   ],
                                 ),
                               ),
-                              Positioned(
-                                right: 0,
-                                child: CircleIconButton(
-                                  iconUrl: 'assets/icons/heart.svg',
-                                  color: Colors.grey,
-                                ),
-                              )
+                              // Positioned(
+                              //   right: 0,
+                              //   child: CircleIconButton(
+                              //     iconUrl: 'assets/icons/heart.svg',
+                              //     color: Colors.grey,
+                              //   ),
+                              // )
                             ],
                           ),
                         ),
