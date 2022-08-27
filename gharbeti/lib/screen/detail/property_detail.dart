@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class PropertyDetail extends StatelessWidget {
   final String? id;
@@ -17,22 +18,32 @@ class PropertyDetail extends StatelessWidget {
   final String? ownername;
   final String? ownerphone;
   final String? unit;
-  const PropertyDetail(
-      {Key? key,
-      this.id,
-      this.imgURL,
-      this.propertyTitle,
-      this.address,
-      this.status,
-      this.roadSize,
-      this.price,
-      this.price_label,
-      this.description,
-      this.area,
-      this.unit,
-      this.ownername,
-      this.ownerphone})
-      : super(key: key);
+  final String? bedroom;
+  final String? kitchen;
+  final String? bathroom;
+  final String? livingroom;
+  final String? parking;
+  const PropertyDetail({
+    Key? key,
+    this.id,
+    this.imgURL,
+    this.propertyTitle,
+    this.address,
+    this.status,
+    this.roadSize,
+    this.price,
+    this.price_label,
+    this.description,
+    this.area,
+    this.unit,
+    this.ownername,
+    this.ownerphone,
+    this.bedroom,
+    this.kitchen,
+    this.bathroom,
+    this.livingroom,
+    this.parking,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +132,7 @@ class PropertyDetail extends StatelessWidget {
                   RichText(
                     text: TextSpan(children: [
                       TextSpan(
-                          text: 'Rs ${price}',
+                          text: 'Rs ${price} ',
                           style: Theme.of(context)
                               .textTheme
                               .headline1!
@@ -148,10 +159,11 @@ class PropertyDetail extends StatelessWidget {
                     children: [
                       MenuInfo(
                           imageUrl: 'assets/icons/bedroom.svg',
-                          content: '5 Bedroom\n3 Master Bedroom'),
+                          content:
+                              '${bedroom} Bedroom\n${livingroom} Living Room'),
                       MenuInfo(
                           imageUrl: 'assets/icons/bathroom.svg',
-                          content: '5 Bathroom\n3 Toilet'),
+                          content: '${bathroom} Bathroom'),
                     ],
                   ),
                   SizedBox(height: 10),
@@ -159,10 +171,10 @@ class PropertyDetail extends StatelessWidget {
                     children: [
                       MenuInfo(
                           imageUrl: 'assets/icons/kitchen.svg',
-                          content: '2 Kitchen\n120 sqft'),
+                          content: '${kitchen} Kitchen'),
                       MenuInfo(
                           imageUrl: 'assets/icons/parking.svg',
-                          content: '2 Parking\n120 sqft'),
+                          content: '${parking} Parking'),
                     ],
                   )
                 ],
@@ -204,15 +216,39 @@ class PropertyDetail extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8)),
                   primary: Theme.of(context).primaryColor,
                 ),
-                child: Container(
-                  alignment: Alignment.center,
-                  padding: EdgeInsets.symmetric(vertical: 15),
-                  child: Text(
-                    'Inquiry Now',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold),
+                child: GestureDetector(
+                  onTap: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                              title: Text('Owner Name: ${ownername!}'),
+                              content: Text('Owner Phone: ${ownerphone!}'),
+                              actions: [
+                                TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text("Ok"))
+                              ],
+                            ));
+
+                    // Get.snackbar(
+                    //   ownername!,
+                    //   ownerphone!,
+                    //   icon: Icon(Icons.person, color: Colors.white),
+                    //   snackPosition: SnackPosition.BOTTOM,
+                    // );
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.symmetric(vertical: 15),
+                    child: Text(
+                      'Inquiry Now',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
               ),
