@@ -251,6 +251,13 @@ class _SearchListState extends State<SearchList> {
                                                 area: area,
                                                 unit: unit,
                                                 roadSize: roadSize,
+                                                bedroom: bedroom,
+                                                bathroom: bathroom,
+                                                kitchen: kitchen,
+                                                parking: parking,
+                                                livingroom: livingroom,
+                                                ownername: ownername,
+                                                ownerphone: ownerphone,
                                               )));
                                 },
                                 child: Container(
