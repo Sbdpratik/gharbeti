@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'GharBeti',
-      initialRoute: "/home",
+      initialRoute: "/login",
       getPages: [
         GetPage(name: "/", page: () => MyApp()),
         GetPage(name: "/login", page: () => Login()),

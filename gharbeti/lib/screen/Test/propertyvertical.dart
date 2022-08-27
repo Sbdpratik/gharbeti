@@ -51,8 +51,28 @@ class _PropertyVerticalListState extends State<PropertyVerticalList> {
                     String? ownername;
                     String? ownerphone;
                     String? unit;
+                    String? bedroom;
+                    String? kitchen;
+                    String? bathroom;
+                    String? livingroom;
+                    String? parking;
 
                     try {
+                      bedroom = propertyController
+                          .propertyList!.data![i].attributes!.noOfRoom!.bedrooms
+                          .toString();
+                      kitchen = propertyController
+                          .propertyList!.data![i].attributes!.noOfRoom!.kitchens
+                          .toString();
+                      livingroom = propertyController.propertyList!.data![i]
+                          .attributes!.noOfRoom!.livingroom
+                          .toString();
+                      parking = propertyController
+                          .propertyList!.data![i].attributes!.noOfRoom!.parking
+                          .toString();
+                      bathroom = propertyController
+                          .propertyList!.data![i].attributes!.noOfRoom!.bathroom
+                          .toString();
                       unit = propertyController
                           .propertyList!.data![i].attributes!.totalArea!.units;
                       ownerphone = propertyController.propertyList!.data![i]
@@ -106,6 +126,13 @@ class _PropertyVerticalListState extends State<PropertyVerticalList> {
                                       area: area,
                                       unit: unit,
                                       roadSize: roadSize,
+                                      bedroom: bedroom,
+                                      bathroom: bathroom,
+                                      kitchen: kitchen,
+                                      parking: parking,
+                                      livingroom: livingroom,
+                                      ownername: ownername,
+                                      ownerphone: ownerphone,
                                     )));
                       },
                       child: Container(
